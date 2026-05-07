@@ -1,0 +1,6 @@
+CornSilageRM.90
+- Crop type: forage or silage corn (non-legume, C4).
+- Nitrogen role: does not fix nitrogen and generally benefits from a strong soil nitrogen supply.
+- Rooting and water: moderately deep-rooted (max root depth about 1.55 m) with high water use capacity.
+- Temperature and maturity: warm-adapted (optimum development temperature about 28 C) and earlier-maturing than CornRM.100 (maturity thermal time about 1800).
+- Rotation role: a high-input corn option with much of the harvested biomass removed, so it is less residue-retentive than grain corn.

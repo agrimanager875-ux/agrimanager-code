@@ -1,0 +1,6 @@
+SoybeanMG.5
+- Crop type: legume grain crop (C3).
+- Nitrogen role: fixes nitrogen, so it is usually less dependent on external soil nitrogen than corn or wheat and can improve rotation value for following cereals.
+- Rooting and water: deeper-rooted than SoybeanMG.3 (max root depth about 1.5 m) with moderate water demand.
+- Temperature and maturity: warm-adapted (optimum development temperature about 28 C) and later-maturing than SoybeanMG.3 (maturity thermal time about 2250).
+- Rotation role: similar to SoybeanMG.3, but with a longer season and deeper rooting profile.

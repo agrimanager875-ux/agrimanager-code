@@ -1,0 +1,43 @@
+# =====================================================================
+# gym-dssat Dataset Configuration
+# =====================================================================
+
+# Environment identification
+env_name: gym_dssat
+dataset_id: maize_phase1
+
+# Template environment ID
+# Arbitrary label for this DSSAT simulation configuration
+env_id: maize-irrigation-v0
+
+# Path to gym-dssat installation. The default matches docs/gym_dssat_setup.md.
+dssat_gym_path: spack/gym-dssat-pdi
+
+# Folder to save temporary DSSAT configs
+save_folder: /tmp/dssat_configs/
+
+# If true → natural language observations + text actions
+llm_mode: true
+
+# DSSAT model parameter overrides (optional)
+# These become keyword args for gym_dssat_pdi.make()
+dssat_params: {}
+
+# Environment parameters (passed directly to Gym environment)
+# → The main one from your usage is "mode": ["fertilization", "irrigation", "all"]
+env_params:
+  mode: all
+
+# Max turns per episode
+turn_num: 200
+
+# Random seeds for train/test splits
+train_seeds: [123, 124, 125, 126, 127, 128]
+test_seeds:  [345, 346, 347]
+
+# ============================================================================
+# Reference (not required, just informative)
+# - gym_dssat_pdi variables usually include:
+#   ['cumsumfert', 'dap', 'dtt', 'ep', 'grnwt', 'istage', 'nstres',
+#    'swfac', 'topwt', 'vstage', 'xlai']
+# ============================================================================

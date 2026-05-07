@@ -1,0 +1,9 @@
+# vLLM Server Configuration Example
+model_provider: "vllm_server"
+model_name: "openai/gpt-oss-20b"
+
+# vLLM Server-specific parameters
+api_base: "http://localhost:8000/v1"  # URL of the vLLM server
+
+# Number of parallel workers for API calls
+num_workers: 64

@@ -1,0 +1,52 @@
+env_name: cycles_gym
+dataset_id: cycles_gym_crop_growth_yield_llm_no_think
+
+base_config:
+  env_id: CornShortRockSpringsRW-v1
+  cycles_gym_path: ../AgriManagerExternal/CyclesGym
+  llm_mode: true
+  require_think: false
+  thinking_mode: grounding_decision
+  think_tag: think
+  reward_mode: final_yield
+  valid_action_bonus: 0.1
+  invalid_action_penalty: 0.0
+  reward_scale: 1.0
+  turn_num: 53
+  env_kwargs:
+    delta: 7
+    n_actions: 11
+    maxN: 150
+    start_year: 1980
+    end_year: 1980
+
+train_generation:
+  env_ids:
+    - CornShortRockSpringsRW-v1
+    - CornShortNewHollandRW-v1
+  year_windows:
+    - [1980, 1980]
+    - [1981, 1981]
+    - [1982, 1982]
+    - [1983, 1983]
+  seeds_per_combo: 1
+  seed_start: 0
+
+val_generation:
+  env_ids:
+    - CornShortRockSpringsRW-v1
+    - CornShortNewHollandRW-v1
+  year_windows:
+    - [1984, 1984]
+  seeds_per_combo: 1
+  seed_start: 100
+
+test_generation:
+  env_ids:
+    - CornShortRockSpringsRW-v1
+    - CornShortNewHollandRW-v1
+  year_windows:
+    - [1985, 1985]
+    - [1986, 1986]
+  seeds_per_combo: 1
+  seed_start: 200

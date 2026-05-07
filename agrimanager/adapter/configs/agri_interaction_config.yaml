@@ -1,0 +1,7 @@
+# VERL Interaction configuration for AgriManager environments
+
+interaction:
+  - name: "agri"
+    class_name: "agrimanager.adapter.interactions.agri_interaction.AgriInteraction"
+    config:
+      default_env_type: wofost_gym

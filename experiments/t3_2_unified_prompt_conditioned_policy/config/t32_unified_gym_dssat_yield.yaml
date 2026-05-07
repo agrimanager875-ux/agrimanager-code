@@ -1,0 +1,37 @@
+env_name: gym_dssat
+dataset_id: t32_unified_gym_dssat_yield
+validation_axis: schema_tuple
+
+sampling:
+  generation_seed: 42
+
+env_id: maize-irrigation-v0
+llm_mode: true
+include_crop_traits: false
+objective_id: yield_max
+turn_num: 24
+decision_interval: 10
+num_seasons: 1
+crop_name: maize
+
+env_params:
+  mode: all
+
+train_seeds:
+  count: 400
+  base_seed: 42
+val_seeds:
+  count: 128
+  base_seed: 100042
+
+soil_variation:
+  enabled: false
+
+trajectory_group_labels:
+  schema_tuple: dssat_yield
+  simulator: gym_dssat
+  observation_schema: dssat_native
+  action_menu: dssat_native
+  action_schema: dssat_native
+  reward_formulation: yield_max
+  callback_family: seen_control

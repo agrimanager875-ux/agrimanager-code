@@ -1,0 +1,12 @@
+# Google Gemini 2.0 Flash Experimental Configuration
+model_provider: "google"
+model_name: "gemini-2.0-flash"
+
+# Number of parallel workers for API calls
+num_workers: 64
+
+# API key (optional, can also be set via GOOGLE_API_KEY environment variable)
+# api_key: "your-api-key-here"
+
+# Request timeout in seconds
+timeout: 60

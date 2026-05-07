@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 350" width="720" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#444"/>
+    </marker>
+  </defs>
+
+  <text x="20" y="28" font-size="16" font-weight="600" fill="#222">Three layers, plus a pluggable env adapter</text>
+  <text x="20" y="48" font-size="13" fill="#666">Overrides flow down only. The env adapter is swappable by dataset config.</text>
+
+  <!-- sbatch -->
+  <rect x="60" y="72" width="360" height="52" rx="6" fill="#f5f5f5" stroke="#888" stroke-width="1.4"/>
+  <text x="240" y="96" font-size="14" font-weight="600" text-anchor="middle" fill="#222">sbatch_*.slurm</text>
+  <text x="240" y="114" font-size="12" text-anchor="middle" fill="#555">resources only · activate env · srun one run_*.sh</text>
+
+  <!-- arrow sbatch -> run -->
+  <line x1="240" y1="124" x2="240" y2="154" stroke="#444" stroke-width="1.4" marker-end="url(#arr)"/>
+  <text x="250" y="143" font-size="12" fill="#666">srun</text>
+
+  <!-- run_*.sh -->
+  <rect x="60" y="156" width="360" height="68" rx="6" fill="#e8f0fb" stroke="#4a78c9" stroke-width="1.4"/>
+  <text x="240" y="180" font-size="14" font-weight="600" text-anchor="middle" fill="#222">experiments/&lt;exp&gt;/run_*.sh</text>
+  <text x="240" y="199" font-size="12" text-anchor="middle" fill="#555">fixed wrapper · hardcodes every path and override</text>
+  <text x="240" y="215" font-size="12" text-anchor="middle" fill="#555">no free-form CLI flags</text>
+
+  <!-- arrow run -> entrypoints -->
+  <line x1="240" y1="224" x2="240" y2="254" stroke="#444" stroke-width="1.4" marker-end="url(#arr)"/>
+  <text x="250" y="243" font-size="12" fill="#666">Hydra key=value</text>
+
+  <!-- entrypoints -->
+  <rect x="60" y="256" width="360" height="76" rx="6" fill="#fff3e0" stroke="#d68f2e" stroke-width="1.4"/>
+  <text x="240" y="280" font-size="14" font-weight="600" text-anchor="middle" fill="#222">entrypoints/*.sh</text>
+  <text x="240" y="299" font-size="12" text-anchor="middle" fill="#555">stable atomic operations</text>
+  <text x="240" y="317" font-size="12" text-anchor="middle" fill="#555">dataset build · LLM train · LLM eval · NN train · NN eval</text>
+
+  <!-- env_name dispatch arrow to env block -->
+  <line x1="420" y1="294" x2="498" y2="294" stroke="#444" stroke-width="1.4" marker-end="url(#arr)"/>
+  <text x="462" y="285" font-size="12" text-anchor="middle" fill="#666">env_name</text>
+
+  <!-- env adapter -->
+  <rect x="502" y="256" width="198" height="76" rx="6" fill="#e8f6e8" stroke="#3b8c3b" stroke-width="1.4"/>
+  <text x="601" y="280" font-size="14" font-weight="600" text-anchor="middle" fill="#222">agrimanager/env/&lt;name&gt;/</text>
+  <text x="601" y="299" font-size="12" text-anchor="middle" fill="#555">pluggable adapter</text>
+  <text x="601" y="317" font-size="12" text-anchor="middle" fill="#555">4 files, no registration</text>
+</svg>

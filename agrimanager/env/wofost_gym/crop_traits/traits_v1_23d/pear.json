@@ -1,0 +1,53 @@
+{
+  "crop": "pear",
+  "variety": "pear_1",
+  "trait_schema": "traits_v1_23d",
+  "core_facts": {
+    "temperature": {
+      "TBASEM_C": 10.0,
+      "TEFFMX_C": 30.0
+    },
+    "phenology": {
+      "TSUMEM_Cd": 100.0,
+      "TSUM1_Cd": 967.0,
+      "TSUM2_Cd": 1880.0,
+      "TSUM3_Cd": 1000.0,
+      "TSUM_total_Cd": 2947.0,
+      "IDSL": 1.0,
+      "DLO_hr": 14.0,
+      "DLC_hr": 8.0
+    },
+    "root_and_water": {
+      "RDMCR_cm": 120.0,
+      "RRI_cm_per_day": 1.2,
+      "DEPNR": 1.5,
+      "CFET": 1.02,
+      "IAIRDU": 0.0
+    },
+    "nutrient_capacity_leaf": {
+      "NMAXLV_DVS0": 0.06,
+      "NMAXLV_DVS1": 0.02,
+      "PMAXLV_DVS0": 0.0144,
+      "PMAXLV_DVS1": 0.0048,
+      "KMAXLV_DVS0": 0.096,
+      "KMAXLV_DVS1": 0.032
+    },
+    "assimilation_and_partition": {
+      "AMAX_peak": 43.0,
+      "FOTB_storage_onset_DVS": null
+    }
+  },
+  "derived_traits": {
+    "season_length_class": "long-season",
+    "temperature_adaptation": "warm-adapted",
+    "rooting_class": "moderately deep-rooted",
+    "water_stress_response": "more drought-sensitive",
+    "development_driver": "temperature + daylength",
+    "storage_allocation_timing": "unknown",
+    "assimilation_class": "moderate assimilation potential"
+  },
+  "notes": [
+    "This card is generated from WOFOST parameter files only.",
+    "Trait labels are heuristic summaries of model parameters, not field trial guarantees."
+  ]
+}

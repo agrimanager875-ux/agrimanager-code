@@ -1,0 +1,26 @@
+env_name: gym_dssat
+dataset_id: smoke_cross_sim_gym_dssat_llm_think
+env_id: maize-irrigation-v0
+llm_mode: true
+include_crop_traits: false
+objective_id: yield_max
+turn_num: 4
+decision_interval: 10
+num_seasons: 1
+require_think: true
+thinking_mode: think
+think_tag: tool_call
+crop_name: maize
+env_params:
+  mode: all
+train_seeds:
+  count: 2
+  base_seed: 510000
+val_seeds:
+  count: 1
+  base_seed: 520000
+test_seeds:
+  count: 1
+  base_seed: 530000
+soil_variation:
+  enabled: false

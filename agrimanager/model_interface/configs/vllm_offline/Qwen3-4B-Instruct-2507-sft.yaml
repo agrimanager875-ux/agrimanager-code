@@ -1,0 +1,9 @@
+model_provider: "vllm_offline"
+
+# Path to your finetuned checkpoint directory
+model_name: "/projects/bfql/agrimanager_sft/Qwen3-4B-Instruct-2507/agrimanager_merged_sft_train"
+
+tensor_parallel_size: 1
+dtype: bfloat16
+max_model_len: 30000
+trust_remote_code: true

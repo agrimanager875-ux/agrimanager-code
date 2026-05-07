@@ -1,0 +1,18 @@
+Crop Name: cowpea
+
+Profile
+- Season type: short-season (TSUM total=1360 C.d)
+- Temperature adaptation: warm-adapted (TBASEM=10.00 C)
+- Development driver: temperature + daylength (IDSL=1, DLO=1.00 h)
+- Root/water trait: moderately deep-rooted, moderately drought-tolerant (RDMCR=120.00 cm, DEPNR=3.50)
+- Assimilation trait: moderate assimilation potential (AMAX peak=40.00)
+- Storage allocation: late storage allocation (FOTB onset DVS=1.50)
+
+Nutrient capacity proxies (leaf maxima)
+- NMAXLV: DVS0=0.0600, DVS1=0.0400
+- PMAXLV: DVS0=0.0088, DVS1=0.0059
+- KMAXLV: DVS0=0.0667, DVS1=0.0444
+
+Use guidance
+- Treat this as prior knowledge for zero-shot policy transfer.
+- Final action should still adapt to current weather/soil observations.

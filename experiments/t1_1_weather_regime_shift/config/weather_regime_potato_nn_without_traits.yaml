@@ -1,0 +1,68 @@
+env_name: wofost_gym
+dataset_id: weather_regime_potato_nn_without_traits
+validation_axis: weather_regime
+# Dataset records include split/weather_regime trajectory group labels.
+source:
+  kind: weather_pool
+  path: agrimanager/wofost-weather-regime-pool
+sampling:
+  generation_seed: 42
+  splits:
+    train:
+      role: train
+      crops:
+      - potato
+      num_samples: 1600
+      labels:
+        weather_regime: id
+    val_id:
+      role: validation
+      validation_set: id
+      crops:
+      - potato
+      num_samples: 128
+      labels:
+        weather_regime: id
+    val_drought:
+      role: validation
+      validation_set: drought
+      crops:
+      - potato
+      num_samples: 128
+      labels:
+        weather_regime: drought
+    val_wet:
+      role: validation
+      validation_set: wet
+      crops:
+      - potato
+      num_samples: 128
+      labels:
+        weather_regime: wet
+    val_hot:
+      role: validation
+      validation_set: hot
+      crops:
+      - potato
+      num_samples: 128
+      labels:
+        weather_regime: hot
+    val_cold:
+      role: validation
+      validation_set: cold
+      crops:
+      - potato
+      num_samples: 128
+      labels:
+        weather_regime: cold
+env:
+  env_id: lnpkw-v0
+  wofost_gym_path: ../AgriManagerExternal/WOFOSTGym
+  llm_mode: false
+  intvn_interval: 10
+  turn_num: 24
+  scale_action_amounts_by_interval: true
+  fert_amount: 20.0
+  irrig_amount: 5.0
+  objective_id: profit_max
+  include_crop_traits: false

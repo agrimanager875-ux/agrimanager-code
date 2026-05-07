@@ -1,0 +1,9 @@
+model_provider: "vllm_offline"
+model_name: "Qwen/Qwen2.5-32B-Instruct"
+
+tensor_parallel_size: 4
+gpu_memory_utilization: 0.85
+trust_remote_code: true
+dtype: "bfloat16"
+tokenizer_mode: "auto"
+max_model_len: 8000

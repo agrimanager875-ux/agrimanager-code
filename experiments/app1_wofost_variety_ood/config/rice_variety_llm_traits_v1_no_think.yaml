@@ -1,0 +1,70 @@
+env_name: wofost_gym
+dataset_id: rice_variety_llm_traits_v1_no_think
+source:
+  kind: weather_pool
+  path: agrimanager/wofost-weather-pool
+sampling:
+  generation_seed: 42
+  variety_splits:
+    rice:
+      id:
+      - rice_1
+      - rice_3
+      - rice_4
+      - rice_6
+      - rice_7
+      - rice_8
+      - rice_9
+      ood:
+      - rice_2
+      - rice_5
+  splits:
+    train:
+      crop_variety_budgets:
+        rice:
+          rice_1: 448
+          rice_3: 448
+          rice_4: 448
+          rice_6: 448
+          rice_7: 448
+          rice_8: 448
+          rice_9: 448
+    val:
+      crop_variety_budgets:
+        rice:
+          rice_1: 96
+          rice_2: 96
+          rice_3: 96
+          rice_4: 96
+          rice_5: 96
+          rice_6: 96
+          rice_7: 96
+          rice_8: 96
+          rice_9: 96
+    test:
+      crop_variety_budgets:
+        rice:
+          rice_1: 128
+          rice_2: 128
+          rice_3: 128
+          rice_4: 128
+          rice_5: 128
+          rice_6: 128
+          rice_7: 128
+          rice_8: 128
+          rice_9: 128
+env:
+  env_id: lnpkw-v0
+  wofost_gym_path: ../AgriManagerExternal/WOFOSTGym
+  llm_mode: true
+  intvn_interval: 10
+  turn_num: 24
+  scale_action_amounts_by_interval: true
+  objective_id: profit_max
+  include_crop_traits: true
+  include_variety_traits: true
+  crop_traits_dir: agrimanager/env/wofost_gym/crop_traits
+  trait_schema: rice_variety_traits_v1
+  require_think: false
+  thinking_mode: think
+  think_tag: tool_call

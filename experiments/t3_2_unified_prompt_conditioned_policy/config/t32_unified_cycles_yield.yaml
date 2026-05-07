@@ -1,0 +1,64 @@
+env_name: cycles_gym
+dataset_id: t32_unified_cycles_yield
+validation_axis: schema_tuple
+
+sampling:
+  generation_seed: 42
+
+base_config:
+  env_id: CornShortRockSpringsFW-v1
+  cycles_gym_path: ../AgriManagerExternal/CyclesGym
+  llm_mode: true
+  objective_id: yield_max
+  include_crop_traits: false
+  turn_num: 26
+  trajectory_group_labels:
+    schema_tuple: cycles_yield
+    simulator: cycles_gym
+    observation_schema: cycles_native
+    action_menu: cycles_native
+    action_schema: cycles_native
+    reward_formulation: yield_max
+    callback_family: seen_control
+  env_kwargs:
+    delta: 10
+    n_actions: 11
+    maxN: 150
+    start_year: 1980
+    end_year: 1980
+
+train_generation:
+  env_ids: [CornShortRockSpringsFW-v1]
+  year_windows:
+    - [1980, 1980]
+    - [1981, 1981]
+    - [1982, 1982]
+    - [1983, 1983]
+    - [1984, 1984]
+    - [1985, 1985]
+    - [1986, 1986]
+    - [1987, 1987]
+    - [1988, 1988]
+    - [1989, 1989]
+    - [1990, 1990]
+    - [1991, 1991]
+    - [1992, 1992]
+    - [1993, 1993]
+    - [1994, 1994]
+    - [1995, 1995]
+  seeds_per_combo: 25
+  seed_start: 42
+
+val_generation:
+  env_ids: [CornShortRockSpringsFW-v1]
+  year_windows:
+    - [1996, 1996]
+    - [1997, 1997]
+    - [1998, 1998]
+    - [1999, 1999]
+    - [2000, 2000]
+    - [2001, 2001]
+    - [2002, 2002]
+    - [2003, 2003]
+  seeds_per_combo: 16
+  seed_start: 100042

@@ -1,0 +1,25 @@
+env_name: cycles_gym
+dataset_id: smoke_cross_sim_cycles_gym_llm_think
+base_config:
+  env_id: CornShortRockSpringsFW-v1
+  cycles_gym_path: ../AgriManagerExternal/CyclesGym
+  llm_mode: true
+  objective_id: yield_max
+  include_crop_traits: false
+  require_think: true
+  thinking_mode: think
+  think_tag: tool_call
+  turn_num: 4
+  env_kwargs:
+    delta: 10
+    n_actions: 11
+    maxN: 150
+    start_year: 1980
+    end_year: 1980
+train_configs:
+  - seed: 0
+  - seed: 1
+val_configs:
+  - seed: 90
+test_configs:
+  - seed: 100

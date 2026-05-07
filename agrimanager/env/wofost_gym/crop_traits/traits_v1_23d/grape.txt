@@ -1,0 +1,18 @@
+Crop Name: grape
+
+Profile
+- Season type: short-season (TSUM total=883 C.d)
+- Temperature adaptation: warm-adapted (TBASEM=10.79 C)
+- Development driver: temperature only (IDSL=0, DLO=14.00 h)
+- Root/water trait: moderately deep-rooted, more drought-sensitive (RDMCR=120.00 cm, DEPNR=1.50)
+- Assimilation trait: moderate assimilation potential (AMAX peak=43.00)
+- Storage allocation: unknown (FOTB onset DVS=NA)
+
+Nutrient capacity proxies (leaf maxima)
+- NMAXLV: DVS0=0.0600, DVS1=0.0200
+- PMAXLV: DVS0=0.0144, DVS1=0.0048
+- KMAXLV: DVS0=0.0960, DVS1=0.0320
+
+Use guidance
+- Treat this as prior knowledge for zero-shot policy transfer.
+- Final action should still adapt to current weather/soil observations.

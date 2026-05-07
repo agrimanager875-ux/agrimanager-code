@@ -1,0 +1,173 @@
+env_name: wofost_gym
+dataset_id: t21_observation_schema_shift_llm_no_think
+validation_axis: observation_schema
+
+source:
+  kind: weather_pool
+  path: agrimanager/weather_pool_maize
+
+sampling:
+  generation_seed: 42
+  scenario_sets:
+    train_base:
+      source_split: train
+      crops: [maize]
+      num_samples: 1600
+
+    val_base:
+      source_split: val
+      crops: [maize]
+      num_samples: 128
+
+  splits:
+    train:
+      role: train
+      scenario_set: train_base
+      labels:
+        observation_schema: S1_full_current
+        observation_schema_family: S1_full_current
+      env:
+        observation_schema_name: S1_full_current
+        prompt_observation_fields: [FIN, DVS, WSO, NAVAIL, PAVAIL, KAVAIL, SM, TOTN, TOTP, TOTK, TOTIRRIG, IRRAD, TEMP, RAIN, DAYS]
+
+    val_s1:
+      role: validation
+      validation_set: s1_full_current
+      scenario_set: val_base
+      labels:
+        observation_schema: S1_full_current
+        observation_schema_family: S1_full_current
+      env:
+        observation_schema_name: S1_full_current
+        prompt_observation_fields: [FIN, DVS, WSO, NAVAIL, PAVAIL, KAVAIL, SM, TOTN, TOTP, TOTK, TOTIRRIG, IRRAD, TEMP, RAIN, DAYS]
+
+    val_s2a:
+      role: validation
+      validation_set: s2a_no_stage_time
+      scenario_set: val_base
+      labels:
+        observation_schema: S2a_no_stage_time
+        observation_schema_family: S2_component_leave_one_out
+      env:
+        observation_schema_name: S2a_no_stage_time
+        prompt_observation_fields: [FIN, WSO, NAVAIL, PAVAIL, KAVAIL, SM, TOTN, TOTP, TOTK, TOTIRRIG, IRRAD, TEMP, RAIN]
+
+    val_s2b:
+      role: validation
+      validation_set: s2b_no_resource_state
+      scenario_set: val_base
+      labels:
+        observation_schema: S2b_no_resource_state
+        observation_schema_family: S2_component_leave_one_out
+      env:
+        observation_schema_name: S2b_no_resource_state
+        prompt_observation_fields: [FIN, DVS, WSO, TOTN, TOTP, TOTK, TOTIRRIG, IRRAD, TEMP, RAIN, DAYS]
+
+    val_s2c:
+      role: validation
+      validation_set: s2c_no_management_history
+      scenario_set: val_base
+      labels:
+        observation_schema: S2c_no_management_history
+        observation_schema_family: S2_component_leave_one_out
+      env:
+        observation_schema_name: S2c_no_management_history
+        prompt_observation_fields: [FIN, DVS, WSO, NAVAIL, PAVAIL, KAVAIL, SM, IRRAD, TEMP, RAIN, DAYS]
+
+    val_s2d:
+      role: validation
+      validation_set: s2d_no_weather_context
+      scenario_set: val_base
+      labels:
+        observation_schema: S2d_no_weather_context
+        observation_schema_family: S2_component_leave_one_out
+      env:
+        observation_schema_name: S2d_no_weather_context
+        prompt_observation_fields: [FIN, DVS, WSO, NAVAIL, PAVAIL, KAVAIL, SM, TOTN, TOTP, TOTK, TOTIRRIG, DAYS]
+
+    val_s3:
+      role: validation
+      validation_set: s3_domain_synonym_rename
+      scenario_set: val_base
+      labels:
+        observation_schema: S3_domain_synonym_rename
+        observation_schema_family: S3_domain_synonym_rename
+      env:
+        observation_schema_name: S3_domain_synonym_rename
+        prompt_observation_fields: [FIN, DVS, WSO, NAVAIL, PAVAIL, KAVAIL, SM, TOTN, TOTP, TOTK, TOTIRRIG, IRRAD, TEMP, RAIN, DAYS]
+        prompt_field_aliases:
+          FIN: Season completion indicator
+          DVS: Phenology stage index
+          WSO: Harvestable storage biomass
+          NAVAIL: Root-zone mineral nitrogen
+          PAVAIL: Root-zone available phosphorus
+          KAVAIL: Root-zone available potassium
+          SM: Root-zone water fraction
+          TOTN: Applied nitrogen to date
+          TOTP: Applied phosphorus to date
+          TOTK: Applied potassium to date
+          TOTIRRIG: Irrigation depth to date
+          IRRAD: Incident solar radiation
+          TEMP: Mean air temperature
+          RAIN: Precipitation depth
+          DAYS: Elapsed crop days
+
+    val_s4:
+      role: validation
+      validation_set: s4_compact_growth_superset
+      scenario_set: val_base
+      labels:
+        observation_schema: S4_compact_growth_superset
+        observation_schema_family: S4_compact_growth_superset
+      env:
+        observation_schema_name: S4_compact_growth_superset
+        output_vars: [FIN, DVS, WSO, NAVAIL, PAVAIL, KAVAIL, SM, TOTN, TOTP, TOTK, TOTIRRIG, LAI, TAGP, RD, RFTRA, NUPTAKETOTAL, PUPTAKETOTAL, KUPTAKETOTAL]
+        prompt_observation_fields: [FIN, DVS, WSO, NAVAIL, PAVAIL, KAVAIL, SM, TOTN, TOTP, TOTK, TOTIRRIG, IRRAD, TEMP, RAIN, DAYS, LAI, TAGP, RD, RFTRA, NUPTAKETOTAL, PUPTAKETOTAL, KUPTAKETOTAL]
+
+    val_s5:
+      role: validation
+      validation_set: s5_anonymous_label_rename
+      scenario_set: val_base
+      labels:
+        observation_schema: S5_anonymous_label_rename
+        observation_schema_family: S5_anonymous_label_rename
+      env:
+        observation_schema_name: S5_anonymous_label_rename
+        prompt_observation_fields: [FIN, DVS, WSO, NAVAIL, PAVAIL, KAVAIL, SM, TOTN, TOTP, TOTK, TOTIRRIG, IRRAD, TEMP, RAIN, DAYS]
+        prompt_field_aliases:
+          FIN: A
+          DVS: B
+          WSO: C
+          NAVAIL: D
+          PAVAIL: E
+          KAVAIL: F
+          SM: G
+          TOTN: H
+          TOTP: I
+          TOTK: J
+          TOTIRRIG: K
+          IRRAD: L
+          TEMP: M
+          RAIN: N
+          DAYS: O
+
+
+env:
+  env_id: lnpkw-v0
+  wofost_gym_path: ../AgriManagerExternal/WOFOSTGym
+  llm_mode: true
+  intvn_interval: 10
+  turn_num: 24
+  scale_action_amounts_by_interval: true
+  objective_id: profit_max
+  reward_params:
+    cost_n: 3.5
+    cost_p: 5.5
+    cost_k: 2.25
+    cost_water: 0.05
+  include_crop_traits: false
+  require_think: false
+  thinking_mode: think
+  think_tag: tool_call
+  observation_schema_name: S1_full_current
+  prompt_observation_fields: [FIN, DVS, WSO, NAVAIL, PAVAIL, KAVAIL, SM, TOTN, TOTP, TOTK, TOTIRRIG, IRRAD, TEMP, RAIN, DAYS]

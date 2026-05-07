@@ -1,0 +1,10 @@
+# vLLM Server Configuration Example
+model_provider: "vllm_server"
+model_name: "Qwen/Qwen2.5-3B-Instruct"
+
+# vLLM Server-specific parameters
+api_base: "http://localhost:8000/v1"  # URL of the vLLM server
+api_key: "token-abc123" # API key for authentication, same as configured on the server
+
+# Number of parallel workers for API calls
+num_workers: 64

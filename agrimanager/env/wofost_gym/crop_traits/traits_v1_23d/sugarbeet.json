@@ -1,0 +1,53 @@
+{
+  "crop": "sugarbeet",
+  "variety": "sugarbeet_1",
+  "trait_schema": "traits_v1_23d",
+  "core_facts": {
+    "temperature": {
+      "TBASEM_C": 3.0,
+      "TEFFMX_C": 20.0
+    },
+    "phenology": {
+      "TSUMEM_Cd": 90.0,
+      "TSUM1_Cd": 650.0,
+      "TSUM2_Cd": 1400.0,
+      "TSUM3_Cd": 900.0,
+      "TSUM_total_Cd": 2140.0,
+      "IDSL": 1.0,
+      "DLO_hr": 14.0,
+      "DLC_hr": 8.0
+    },
+    "root_and_water": {
+      "RDMCR_cm": 120.0,
+      "RRI_cm_per_day": 1.2,
+      "DEPNR": 2.0,
+      "CFET": 1.0,
+      "IAIRDU": 0.0
+    },
+    "nutrient_capacity_leaf": {
+      "NMAXLV_DVS0": 0.06,
+      "NMAXLV_DVS1": 0.04,
+      "PMAXLV_DVS0": 0.0069,
+      "PMAXLV_DVS1": 0.0046,
+      "KMAXLV_DVS0": 0.077,
+      "KMAXLV_DVS1": 0.051
+    },
+    "assimilation_and_partition": {
+      "AMAX_peak": 45.0,
+      "FOTB_storage_onset_DVS": 1.3
+    }
+  },
+  "derived_traits": {
+    "season_length_class": "medium-season",
+    "temperature_adaptation": "cool-adapted",
+    "rooting_class": "moderately deep-rooted",
+    "water_stress_response": "more drought-sensitive",
+    "development_driver": "temperature + daylength",
+    "storage_allocation_timing": "late storage allocation",
+    "assimilation_class": "moderate assimilation potential"
+  },
+  "notes": [
+    "This card is generated from WOFOST parameter files only.",
+    "Trait labels are heuristic summaries of model parameters, not field trial guarantees."
+  ]
+}

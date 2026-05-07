@@ -1,0 +1,51 @@
+{
+  "crop": "fababean",
+  "variety": "fababean_1",
+  "trait_schema": "traits_v1_6d",
+  "core_facts": {
+    "decision_axes": {
+      "season_urgency": 0.7794826720241085,
+      "development_constraint": 0.225,
+      "water_priority": 0.22647058823529412,
+      "nitrogen_priority": 0.53,
+      "phosphorus_priority": 0.3726790450928381,
+      "potassium_priority": 0.544995507637017
+    }
+  },
+  "source_facts": {
+    "season_urgency": {
+      "TSUM_total_Cd": 2284.0,
+      "FOTB_storage_onset_DVS": 1.0
+    },
+    "development_constraint": {
+      "TBASEM_C": 0.0,
+      "IDSL": 1.0
+    },
+    "water_priority": {
+      "DEPNR": 4.5,
+      "RDMCR_cm": 100.0,
+      "CFET": 1.0,
+      "IAIRDU": 0.0
+    },
+    "nutrient_priority": {
+      "NMAXLV_DVS0": 0.06,
+      "NMAXLV_DVS1": 0.035,
+      "PMAXLV_DVS0": 0.0096,
+      "PMAXLV_DVS1": 0.0056,
+      "KMAXLV_DVS0": 0.072,
+      "KMAXLV_DVS1": 0.042
+    }
+  },
+  "derived_traits": {
+    "season_urgency_level": "high",
+    "development_constraint_level": "low",
+    "water_priority_level": "low",
+    "nitrogen_priority_level": "medium",
+    "phosphorus_priority_level": "medium",
+    "potassium_priority_level": "medium"
+  },
+  "notes": [
+    "This 6D card is derived from the raw WOFOST parameter card for policy transfer.",
+    "The axes are heuristic decision-facing summaries, not causal guarantees."
+  ]
+}

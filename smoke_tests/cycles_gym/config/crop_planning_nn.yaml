@@ -1,0 +1,48 @@
+env_name: cycles_gym
+dataset_id: cycles_gym_crop_planning_smoke_nn
+
+base_config:
+  cycles_gym_path: ../AgriManagerExternal/CyclesGym
+  llm_mode: false
+  turn_num: 19
+  env_kwargs:
+    rotation_crops:
+      - CornRM.100
+      - SoybeanMG.3
+    crop_price_sampling:
+      CornRM.100:
+        min: 160.0
+        mode: 178.34
+        max: 205.0
+      SoybeanMG.3:
+        min: 320.0
+        mode: 363.4
+        max: 410.0
+
+train_generation:
+  env_ids:
+    - CropPlanningRockSpringsRW-v1
+    - CropPlanningNewHollandRW-v1
+  year_windows:
+    - [1980, 1998]
+    - [1981, 1999]
+  seeds_per_combo: 2
+  seed_start: 0
+
+val_generation:
+  env_ids:
+    - CropPlanningRockSpringsRW-v1
+    - CropPlanningNewHollandRW-v1
+  year_windows:
+    - [1982, 2000]
+  seeds_per_combo: 1
+  seed_start: 100
+
+test_generation:
+  env_ids:
+    - CropPlanningRockSpringsRW-v1
+    - CropPlanningNewHollandRW-v1
+  year_windows:
+    - [1983, 2001]
+  seeds_per_combo: 1
+  seed_start: 200

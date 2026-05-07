@@ -1,0 +1,60 @@
+defaults:
+  - override hydra/job_logging: console_only
+
+data:
+  train_files: smoke_tests/wofost_gym/data/wofost_gym_smoke_nn/train.parquet
+  val_files: smoke_tests/wofost_gym/data/wofost_gym_smoke_nn/val.parquet
+  val_sets: {}
+  validation_axis: null
+
+agent:
+  type: PPO
+  track: true
+  wandb_project_name: agrimanager
+  wandb_entity: null
+  num_envs: 32
+  total_timesteps: null
+  num_steps: 72
+  num_minibatches: 4
+  n_epochs: 1
+  learning_rate: 0.00025
+  gamma: 1.0
+  gae_lambda: 0.99
+  clip_coef: 0.2
+  ent_coef: 0.01
+  vf_coef: 0.5
+  max_grad_norm: 0.5
+  seed: 1
+  checkpoint_mode: epoch  # epoch | timestep | none
+  exp_name: wofost_nn_default
+
+runtime:
+  device: auto
+  vec_env: subproc
+  subproc_start_method: fork
+  progress_bar: false
+  sample_with_replacement: false
+  shard_train_scenarios_across_envs: true
+  train_epochs: 8
+  resume:
+    mode: never
+    path: null
+  validation:
+    enabled: true
+    val_before_train: true
+    frequency: null
+    evals_per_epoch: 4
+    seed: 0
+    num_repeats: 1
+    deterministic: false
+    log_to_wandb: true
+
+output:
+  save_folder: smoke_tests/wofost_gym/results/nn_train/wofost_nn_default
+
+hydra:
+  run:
+    dir: .
+  output_subdir: null
+  job:
+    chdir: false

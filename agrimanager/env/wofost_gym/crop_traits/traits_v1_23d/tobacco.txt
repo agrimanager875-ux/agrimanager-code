@@ -1,0 +1,18 @@
+Crop Name: tobacco
+
+Profile
+- Season type: long-season (TSUM total=3897 C.d)
+- Temperature adaptation: cool-adapted (TBASEM=0.00 C)
+- Development driver: temperature + daylength (IDSL=1, DLO=1.00 h)
+- Root/water trait: shallow-rooted, more drought-tolerant (RDMCR=70.00 cm, DEPNR=4.50)
+- Assimilation trait: lower assimilation potential (AMAX peak=25.00)
+- Storage allocation: late storage allocation (FOTB onset DVS=2.00)
+
+Nutrient capacity proxies (leaf maxima)
+- NMAXLV: DVS0=0.0600, DVS1=0.0400
+- PMAXLV: DVS0=0.0078, DVS1=0.0052
+- KMAXLV: DVS0=0.0710, DVS1=0.0480
+
+Use guidance
+- Treat this as prior knowledge for zero-shot policy transfer.
+- Final action should still adapt to current weather/soil observations.

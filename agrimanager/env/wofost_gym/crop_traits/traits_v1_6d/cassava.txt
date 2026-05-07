@@ -1,0 +1,13 @@
+Crop Name: cassava
+
+Decision Profile
+- Season urgency: high (score=0.88) Higher means shorter effective intervention windows and lower payoff from late corrections.
+- Development constraint: high (score=0.68) Higher means early growth can be more thermally or photoperiod constrained; avoid overreacting to slow early biomass alone.
+- Water priority: low (score=0.23) Higher means emerging water stress should more often push irrigation ahead of extra fertilizer.
+- Nitrogen priority: medium (score=0.47) Higher means low nutrient status is more likely to justify nitrogen correction.
+- Phosphorus priority: high (score=0.91) Higher means phosphorus limitation is more likely to matter for this crop.
+- Potassium priority: medium (score=0.35) Higher means potassium correction is more likely to have value when nutrient status is low.
+
+Use guidance
+- Treat these axes as a compact decision prior rather than a crop identifier.
+- Combine them with current weather, soil, and growth observations before choosing an action.

@@ -1,0 +1,51 @@
+{
+  "crop": "sugarbeet",
+  "variety": "sugarbeet_1",
+  "trait_schema": "traits_v1_6d",
+  "core_facts": {
+    "decision_axes": {
+      "season_urgency": 0.6996986438975389,
+      "development_constraint": 0.36250000000000004,
+      "water_priority": 0.44705882352941173,
+      "nitrogen_priority": 0.59,
+      "phosphorus_priority": 0.19281167108753314,
+      "potassium_priority": 0.6566606768493561
+    }
+  },
+  "source_facts": {
+    "season_urgency": {
+      "TSUM_total_Cd": 2140.0,
+      "FOTB_storage_onset_DVS": 1.3
+    },
+    "development_constraint": {
+      "TBASEM_C": 3.0,
+      "IDSL": 1.0
+    },
+    "water_priority": {
+      "DEPNR": 2.0,
+      "RDMCR_cm": 120.0,
+      "CFET": 1.0,
+      "IAIRDU": 0.0
+    },
+    "nutrient_priority": {
+      "NMAXLV_DVS0": 0.06,
+      "NMAXLV_DVS1": 0.04,
+      "PMAXLV_DVS0": 0.0069,
+      "PMAXLV_DVS1": 0.0046,
+      "KMAXLV_DVS0": 0.077,
+      "KMAXLV_DVS1": 0.051
+    }
+  },
+  "derived_traits": {
+    "season_urgency_level": "high",
+    "development_constraint_level": "medium",
+    "water_priority_level": "medium",
+    "nitrogen_priority_level": "medium",
+    "phosphorus_priority_level": "low",
+    "potassium_priority_level": "medium"
+  },
+  "notes": [
+    "This 6D card is derived from the raw WOFOST parameter card for policy transfer.",
+    "The axes are heuristic decision-facing summaries, not causal guarantees."
+  ]
+}

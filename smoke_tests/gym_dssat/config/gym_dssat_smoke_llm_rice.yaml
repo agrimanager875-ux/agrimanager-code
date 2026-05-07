@@ -1,0 +1,25 @@
+env_name: gym_dssat
+dataset_id: gym_dssat_smoke_llm_rice
+
+env_id: rice-all-v0
+save_folder: /tmp/dssat_configs/
+llm_mode: true
+turn_num: 200
+decision_interval: 1
+
+env_params:
+  mode: all
+  cultivar: rice
+
+train_seeds:
+  count: 4
+  base_seed: 8100
+val_seeds:
+  count: 2
+  base_seed: 8200
+test_seeds:
+  count: 2
+  base_seed: 8300
+
+soil_variation:
+  enabled: false

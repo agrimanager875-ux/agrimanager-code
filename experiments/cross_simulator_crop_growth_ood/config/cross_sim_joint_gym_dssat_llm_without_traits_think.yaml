@@ -1,0 +1,26 @@
+env_name: gym_dssat
+dataset_id: cross_sim_joint_gym_dssat_llm_without_traits_think
+env_id: maize-irrigation-v0
+llm_mode: true
+include_crop_traits: false
+objective_id: yield_max
+turn_num: 24
+decision_interval: 10
+num_seasons: 1
+require_think: true
+thinking_mode: think
+think_tag: tool_call
+crop_name: maize
+env_params:
+  mode: all
+train_seeds:
+  count: 533
+  base_seed: 310000
+val_seeds:
+  count: 128
+  base_seed: 320000
+test_seeds:
+  count: 128
+  base_seed: 330000
+soil_variation:
+  enabled: false

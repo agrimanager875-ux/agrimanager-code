@@ -1,0 +1,22 @@
+data:
+  inference_file: smoke_tests/wofost_gym/data/wofost_gym_smoke_llm/test.parquet
+  validation_axis: null
+
+model:
+  config: agrimanager/model_interface/configs/vllm_offline/default.yaml
+  path: null  # override this with your checkpoint path
+
+runtime:
+  temperature: 0
+  max_tokens: 40000
+  max_retries: 5
+
+output:
+  dir: smoke_tests/wofost_gym/results/llm_eval/entrypoint_default
+
+hydra:
+  run:
+    dir: .
+  output_subdir: null
+  job:
+    chdir: false

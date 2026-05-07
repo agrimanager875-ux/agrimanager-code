@@ -1,0 +1,6 @@
+SpringWheat
+- Crop type: cereal grain crop (non-legume, C3).
+- Nitrogen role: does not fix nitrogen and generally relies on available soil nitrogen, but it is not as warm-season as corn.
+- Rooting and water: moderately deep-rooted (max root depth about 1.5 m) with moderate water demand.
+- Temperature and maturity: cooler-adapted than corn or soybean (optimum development temperature about 20 C) and medium-maturity (maturity thermal time about 1350).
+- Rotation role: a cereal alternative that can diversify rotations, but it does not provide the nitrogen-building benefit of soybean.

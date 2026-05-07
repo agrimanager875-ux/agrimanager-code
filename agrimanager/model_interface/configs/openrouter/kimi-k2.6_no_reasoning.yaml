@@ -1,0 +1,17 @@
+# OpenRouter Configuration - Moonshot AI Kimi K2.6 without exposed reasoning
+model_provider: "openrouter"
+model_name: "moonshotai/kimi-k2.6"
+
+# Number of parallel workers for API calls
+num_workers: 8
+
+# Optional attribution header sent to OpenRouter
+app_title: "AgriManager"
+
+# Keep no-think evaluation focused on the action text instead of reasoning output.
+include_reasoning: false
+reasoning:
+  effort: "none"
+  exclude: true
+
+# You need to set your OpenRouter API key in the environment variable OPENROUTER_API_KEY

@@ -1,0 +1,6 @@
+CornRM.100
+- Crop type: cereal grain crop (non-legume, C4).
+- Nitrogen role: does not fix nitrogen and generally benefits from a strong soil nitrogen supply.
+- Rooting and water: deep-rooted (max root depth about 2.0 m) with relatively high water demand and uptake capacity.
+- Temperature and maturity: warm-adapted (optimum development temperature about 28 C) and relatively long-season (maturity thermal time about 2050).
+- Rotation role: often a high-demand, high-reward crop that can benefit from following a legume or a higher-nitrogen soil state.

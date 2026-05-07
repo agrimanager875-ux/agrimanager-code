@@ -1,0 +1,18 @@
+Crop Name: sugarbeet
+
+Profile
+- Season type: medium-season (TSUM total=2140 C.d)
+- Temperature adaptation: cool-adapted (TBASEM=3.00 C)
+- Development driver: temperature + daylength (IDSL=1, DLO=14.00 h)
+- Root/water trait: moderately deep-rooted, more drought-sensitive (RDMCR=120.00 cm, DEPNR=2.00)
+- Assimilation trait: moderate assimilation potential (AMAX peak=45.00)
+- Storage allocation: late storage allocation (FOTB onset DVS=1.30)
+
+Nutrient capacity proxies (leaf maxima)
+- NMAXLV: DVS0=0.0600, DVS1=0.0400
+- PMAXLV: DVS0=0.0069, DVS1=0.0046
+- KMAXLV: DVS0=0.0770, DVS1=0.0510
+
+Use guidance
+- Treat this as prior knowledge for zero-shot policy transfer.
+- Final action should still adapt to current weather/soil observations.

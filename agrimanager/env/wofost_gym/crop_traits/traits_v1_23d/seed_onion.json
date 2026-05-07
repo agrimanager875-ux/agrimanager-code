@@ -1,0 +1,53 @@
+{
+  "crop": "seed_onion",
+  "variety": "seed_onion_1",
+  "trait_schema": "traits_v1_23d",
+  "core_facts": {
+    "temperature": {
+      "TBASEM_C": 0.0,
+      "TEFFMX_C": 20.0
+    },
+    "phenology": {
+      "TSUMEM_Cd": 110.0,
+      "TSUM1_Cd": 250.0,
+      "TSUM2_Cd": 2050.0,
+      "TSUM3_Cd": 800.0,
+      "TSUM_total_Cd": 2410.0,
+      "IDSL": 1.0,
+      "DLO_hr": 14.0,
+      "DLC_hr": 8.0
+    },
+    "root_and_water": {
+      "RDMCR_cm": 60.0,
+      "RRI_cm_per_day": 1.2,
+      "DEPNR": 3.0,
+      "CFET": 1.0,
+      "IAIRDU": 0.0
+    },
+    "nutrient_capacity_leaf": {
+      "NMAXLV_DVS0": 0.06,
+      "NMAXLV_DVS1": 0.02,
+      "PMAXLV_DVS0": 0.011,
+      "PMAXLV_DVS1": 0.004,
+      "KMAXLV_DVS0": 0.12,
+      "KMAXLV_DVS1": 0.04
+    },
+    "assimilation_and_partition": {
+      "AMAX_peak": 30.0,
+      "FOTB_storage_onset_DVS": 1.27
+    }
+  },
+  "derived_traits": {
+    "season_length_class": "long-season",
+    "temperature_adaptation": "cool-adapted",
+    "rooting_class": "shallow-rooted",
+    "water_stress_response": "more drought-sensitive",
+    "development_driver": "temperature + daylength",
+    "storage_allocation_timing": "late storage allocation",
+    "assimilation_class": "lower assimilation potential"
+  },
+  "notes": [
+    "This card is generated from WOFOST parameter files only.",
+    "Trait labels are heuristic summaries of model parameters, not field trial guarantees."
+  ]
+}

@@ -1,0 +1,32 @@
+env_name: wofost_gym
+dataset_id: example_sample
+
+source:
+  kind: weather_pool
+  path: agrimanager/wofost-weather-pool
+
+sampling:
+  generation_seed: 42
+  splits:
+    train:
+      crops: [wheat]
+      num_samples: 16
+    val:
+      crop_budgets:
+        wheat: 8
+    test:
+      crop_budgets:
+        wheat: 8
+
+env:
+  env_id: lnpkw-v0
+  wofost_gym_path: ../AgriManagerExternal/WOFOSTGym
+  llm_mode: true
+  intvn_interval: 10
+  turn_num: 24
+  scale_action_amounts_by_interval: true
+  objective_id: profit_max
+  include_crop_traits: true
+  crop_traits_dir: agrimanager/env/wofost_gym/crop_traits
+  trait_schema: traits_v1_23d
+  require_think: false

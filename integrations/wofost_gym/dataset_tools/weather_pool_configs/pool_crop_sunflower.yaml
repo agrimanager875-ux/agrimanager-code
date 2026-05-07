@@ -1,0 +1,25 @@
+env_name: wofost_gym
+env_id: lnpkw-v0
+wofost_gym_path: ../AgriManagerExternal/WOFOSTGym
+save_folder: /tmp/wofost_configs_pool_crop_sunflower/
+data_mode: multi_crop_ood
+train_crops:
+- sunflower
+eval_crops:
+- sunflower
+num_train_samples: 3200
+num_val_samples: 128
+num_test_samples: 512
+generation_seed: 42
+year_range:
+- 1984
+- 2019
+min_dvs_threshold: 1.5
+crop_ranges:
+  sunflower:
+    latitude_range:
+    - 35.0
+    - 45.0
+    longitude_range:
+    - -10.0
+    - 30.0

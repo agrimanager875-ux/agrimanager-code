@@ -1,0 +1,18 @@
+Crop Name: rice
+
+Profile
+- Season type: short-season (TSUM total=1600 C.d)
+- Temperature adaptation: temperate-adapted (TBASEM=8.00 C)
+- Development driver: temperature only (IDSL=0, DLO=14.00 h)
+- Root/water trait: shallow-rooted, moderately drought-tolerant (RDMCR=80.00 cm, DEPNR=3.50)
+- Assimilation trait: moderate assimilation potential (AMAX peak=40.00)
+- Storage allocation: early storage allocation (FOTB onset DVS=0.90)
+
+Nutrient capacity proxies (leaf maxima)
+- NMAXLV: DVS0=0.0600, DVS1=0.0200
+- PMAXLV: DVS0=0.0090, DVS1=0.0030
+- KMAXLV: DVS0=0.1200, DVS1=0.0400
+
+Use guidance
+- Treat this as prior knowledge for zero-shot policy transfer.
+- Final action should still adapt to current weather/soil observations.

@@ -1,0 +1,53 @@
+{
+  "crop": "cotton",
+  "variety": "cotton_1",
+  "trait_schema": "traits_v1_23d",
+  "core_facts": {
+    "temperature": {
+      "TBASEM_C": 10.0,
+      "TEFFMX_C": 30.0
+    },
+    "phenology": {
+      "TSUMEM_Cd": 140.0,
+      "TSUM1_Cd": 760.0,
+      "TSUM2_Cd": 1481.0,
+      "TSUM3_Cd": 800.0,
+      "TSUM_total_Cd": 2381.0,
+      "IDSL": 1.0,
+      "DLO_hr": 1.0,
+      "DLC_hr": 0.0
+    },
+    "root_and_water": {
+      "RDMCR_cm": 120.0,
+      "RRI_cm_per_day": 1.2,
+      "DEPNR": 4.5,
+      "CFET": 1.0,
+      "IAIRDU": 0.0
+    },
+    "nutrient_capacity_leaf": {
+      "NMAXLV_DVS0": 0.06,
+      "NMAXLV_DVS1": 0.035,
+      "PMAXLV_DVS0": 0.0109,
+      "PMAXLV_DVS1": 0.0064,
+      "KMAXLV_DVS0": 0.06,
+      "KMAXLV_DVS1": 0.035
+    },
+    "assimilation_and_partition": {
+      "AMAX_peak": 40.0,
+      "FOTB_storage_onset_DVS": 1.7
+    }
+  },
+  "derived_traits": {
+    "season_length_class": "long-season",
+    "temperature_adaptation": "warm-adapted",
+    "rooting_class": "moderately deep-rooted",
+    "water_stress_response": "more drought-tolerant",
+    "development_driver": "temperature + daylength",
+    "storage_allocation_timing": "late storage allocation",
+    "assimilation_class": "moderate assimilation potential"
+  },
+  "notes": [
+    "This card is generated from WOFOST parameter files only.",
+    "Trait labels are heuristic summaries of model parameters, not field trial guarantees."
+  ]
+}

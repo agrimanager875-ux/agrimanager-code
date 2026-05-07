@@ -1,0 +1,224 @@
+# Random-weather crop-planning dataset across four fixed scenario families.
+# Mirrors the legacy crop-planning train/eval setup from clean_cycles:
+# - train years at RockSprings
+# - new years at RockSprings
+# - train years at NewHolland
+# - long horizon at NewHolland
+#
+# The old GRPO wrapper referenced this dataset id even though the YAML was not
+# committed on that branch. This example reconstructs the scenario definitions
+# from scripts/train/run_train_cycles_crop_planning.sh and
+# scripts/external/cycles_gym/compat/experiments/crop_planning/train.py.
+
+env_name: cycles_gym
+dataset_id: crop_planning_rw_multiloc_4windows_llm
+
+base_config:
+  cycles_gym_path: ../AgriManagerExternal/CyclesGym
+  llm_mode: true
+  turn_num: 19
+
+scenario_templates:
+  rocksprings_train: &rocksprings_train
+    env_id: CropPlanningRockSpringsRW-v1
+    env_kwargs:
+      start_year: 1980
+      end_year: 1998
+      rotation_crops:
+        - CornRM.100
+        - SoybeanMG.3
+      weather_generator_kwargs:
+        n_weather_samples: 2
+        sampling_start_year: 1980
+        sampling_end_year: 1998
+        base_weather_file: ../AgriManagerExternal/CyclesGym/cycles/input/RockSprings.weather
+        target_year_range:
+          - 1980
+          - 1981
+          - 1982
+          - 1983
+          - 1984
+          - 1985
+          - 1986
+          - 1987
+          - 1988
+          - 1989
+          - 1990
+          - 1991
+          - 1992
+          - 1993
+          - 1994
+          - 1995
+          - 1996
+          - 1997
+          - 1998
+  rocksprings_new_years: &rocksprings_new_years
+    env_id: CropPlanningRockSpringsRW-v1
+    env_kwargs:
+      start_year: 1998
+      end_year: 2016
+      rotation_crops:
+        - CornRM.100
+        - SoybeanMG.3
+      weather_generator_kwargs:
+        n_weather_samples: 2
+        sampling_start_year: 1998
+        sampling_end_year: 2016
+        base_weather_file: ../AgriManagerExternal/CyclesGym/cycles/input/RockSprings.weather
+        target_year_range:
+          - 1998
+          - 1999
+          - 2000
+          - 2001
+          - 2002
+          - 2003
+          - 2004
+          - 2005
+          - 2006
+          - 2007
+          - 2008
+          - 2009
+          - 2010
+          - 2011
+          - 2012
+          - 2013
+          - 2014
+          - 2015
+          - 2016
+  newholland_train: &newholland_train
+    env_id: CropPlanningNewHollandRW-v1
+    env_kwargs:
+      start_year: 1980
+      end_year: 1998
+      rotation_crops:
+        - CornRM.100
+        - SoybeanMG.3
+      weather_generator_kwargs:
+        n_weather_samples: 2
+        sampling_start_year: 1980
+        sampling_end_year: 1998
+        base_weather_file: ../AgriManagerExternal/CyclesGym/cycles/input/NewHolland.weather
+        target_year_range:
+          - 1980
+          - 1981
+          - 1982
+          - 1983
+          - 1984
+          - 1985
+          - 1986
+          - 1987
+          - 1988
+          - 1989
+          - 1990
+          - 1991
+          - 1992
+          - 1993
+          - 1994
+          - 1995
+          - 1996
+          - 1997
+          - 1998
+  newholland_long: &newholland_long
+    env_id: CropPlanningNewHollandRW-v1
+    env_kwargs:
+      start_year: 1980
+      end_year: 2015
+      rotation_crops:
+        - CornRM.100
+        - SoybeanMG.3
+      weather_generator_kwargs:
+        n_weather_samples: 2
+        sampling_start_year: 1980
+        sampling_end_year: 2015
+        base_weather_file: ../AgriManagerExternal/CyclesGym/cycles/input/NewHolland.weather
+        target_year_range:
+          - 1980
+          - 1981
+          - 1982
+          - 1983
+          - 1984
+          - 1985
+          - 1986
+          - 1987
+          - 1988
+          - 1989
+          - 1990
+          - 1991
+          - 1992
+          - 1993
+          - 1994
+          - 1995
+          - 1996
+          - 1997
+          - 1998
+          - 1999
+          - 2000
+          - 2001
+          - 2002
+          - 2003
+          - 2004
+          - 2005
+          - 2006
+          - 2007
+          - 2008
+          - 2009
+          - 2010
+          - 2011
+          - 2012
+          - 2013
+          - 2014
+          - 2015
+
+train_configs:
+  - <<: *rocksprings_train
+    seed: 0
+  - <<: *rocksprings_train
+    seed: 1
+  - <<: *rocksprings_train
+    seed: 2
+  - <<: *rocksprings_train
+    seed: 3
+  - <<: *rocksprings_new_years
+    seed: 10
+  - <<: *rocksprings_new_years
+    seed: 11
+  - <<: *rocksprings_new_years
+    seed: 12
+  - <<: *rocksprings_new_years
+    seed: 13
+  - <<: *newholland_train
+    seed: 20
+  - <<: *newholland_train
+    seed: 21
+  - <<: *newholland_train
+    seed: 22
+  - <<: *newholland_train
+    seed: 23
+  - <<: *newholland_long
+    seed: 30
+  - <<: *newholland_long
+    seed: 31
+  - <<: *newholland_long
+    seed: 32
+  - <<: *newholland_long
+    seed: 33
+
+val_configs:
+  - <<: *rocksprings_train
+    seed: 90
+  - <<: *rocksprings_new_years
+    seed: 91
+  - <<: *newholland_train
+    seed: 92
+  - <<: *newholland_long
+    seed: 93
+
+test_configs:
+  - <<: *rocksprings_train
+    seed: 100
+  - <<: *rocksprings_new_years
+    seed: 101
+  - <<: *newholland_train
+    seed: 102
+  - <<: *newholland_long
+    seed: 103

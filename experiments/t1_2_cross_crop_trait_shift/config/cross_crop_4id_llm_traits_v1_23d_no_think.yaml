@@ -1,0 +1,68 @@
+env_name: wofost_gym
+dataset_id: cross_crop_4id_llm_traits_v1_23d_no_think
+validation_axis: crop
+source:
+  kind: weather_pool
+  path: agrimanager/wofost-weather-pool
+sampling:
+  generation_seed: 42
+  splits:
+    train:
+      crop_budgets:
+        cotton: 400
+        millet: 400
+        rapeseed: 400
+        rice: 400
+    val_id_crops:
+      role: validation
+      validation_set: id_crops
+      labels:
+        crop_regime: id
+      crop_budgets:
+        cotton: 96
+        millet: 96
+        rapeseed: 96
+        rice: 96
+    val_heldout_crops:
+      role: validation
+      validation_set: heldout_crops
+      labels:
+        crop_regime: heldout
+      crop_budgets:
+        barley: 96
+        groundnut: 96
+        pigeonpea: 96
+        seed_onion: 96
+    test_id_crops:
+      role: test
+      labels:
+        crop_regime: id
+      crop_budgets:
+        cotton: 128
+        millet: 128
+        rapeseed: 128
+        rice: 128
+    test_heldout_crops:
+      role: test
+      labels:
+        crop_regime: heldout
+      crop_budgets:
+        barley: 128
+        groundnut: 128
+        pigeonpea: 128
+        seed_onion: 128
+env:
+  env_id: lnpkw-v0
+  wofost_gym_path: ../AgriManagerExternal/WOFOSTGym
+  llm_mode: true
+  intvn_interval: 10
+  turn_num: 24
+  scale_action_amounts_by_interval: true
+  valid_action_bonus: 0.1
+  objective_id: profit_max
+  include_crop_traits: true
+  crop_traits_dir: agrimanager/env/wofost_gym/crop_traits
+  trait_schema: traits_v1_23d
+  require_think: false
+  thinking_mode: think
+  think_tag: tool_call

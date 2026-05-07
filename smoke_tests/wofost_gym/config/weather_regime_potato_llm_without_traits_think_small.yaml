@@ -1,0 +1,38 @@
+env_name: wofost_gym
+dataset_id: weather_regime_potato_llm_without_traits_think_small
+
+source:
+  kind: weather_pool
+  path: agrimanager/wofost-weather-regime-pool
+
+sampling:
+  generation_seed: 42
+  splits:
+    train:
+      crops: [potato]
+      num_samples: 1600
+    val_drought:
+      crops: [potato]
+      num_samples: 2
+    val_wet:
+      crops: [potato]
+      num_samples: 2
+    val_hot:
+      crops: [potato]
+      num_samples: 2
+    val_cold:
+      crops: [potato]
+      num_samples: 2
+
+env:
+  env_id: lnpkw-v0
+  wofost_gym_path: ../AgriManagerExternal/WOFOSTGym
+  llm_mode: true
+  intvn_interval: 10
+  turn_num: 10
+  scale_action_amounts_by_interval: true
+  objective_id: profit_max
+  include_crop_traits: false
+  require_think: true
+  thinking_mode: think
+  think_tag: tool_call

@@ -1,0 +1,75 @@
+# Random-weather crop-planning dataset with sliding 19-year windows.
+# Generated LLM dataset with:
+# - multiple RW locations
+# - sliding 19-year windows
+# - multiple seeds per (location, year-window) combination
+#
+# This is closer to the older CyclesGym dataset style where a sample could
+# start in different years (for example 1980, 1990, 1997), use random weather,
+# vary location, and vary the random seed.
+
+env_name: cycles_gym
+dataset_id: crop_planning_rw_multiloc_sliding19_llm
+
+base_config:
+  cycles_gym_path: ../AgriManagerExternal/CyclesGym
+  llm_mode: true
+  turn_num: 19
+  env_kwargs:
+    rotation_crops:
+      - CornRM.100
+      - SoybeanMG.3
+    # A fresh fixed price is sampled for each parquet row and then held constant
+    # for that episode. This keeps price variation realistic without requiring a
+    # full per-year timeline in the dataset config.
+    crop_price_sampling:
+      CornRM.100:
+        min: 160.0
+        mode: 178.34
+        max: 205.0
+      SoybeanMG.3:
+        min: 320.0
+        mode: 363.4
+        max: 410.0
+
+train_generation:
+  env_ids:
+    - CropPlanningRockSpringsRW-v1
+    - CropPlanningNewHollandRW-v1
+  year_windows:
+    - [1980, 1998]
+    - [1981, 1999]
+    - [1982, 2000]
+    - [1983, 2001]
+    - [1984, 2002]
+    - [1985, 2003]
+    - [1986, 2004]
+    - [1987, 2005]
+    - [1988, 2006]
+    - [1989, 2007]
+    - [1990, 2008]
+    - [1991, 2009]
+    - [1992, 2010]
+    - [1993, 2011]
+  seeds_per_combo: 2
+  seed_start: 0
+
+val_generation:
+  env_ids:
+    - CropPlanningRockSpringsRW-v1
+    - CropPlanningNewHollandRW-v1
+  year_windows:
+    - [1994, 2012]
+    - [1995, 2013]
+  seeds_per_combo: 1
+  seed_start: 1000
+
+test_generation:
+  env_ids:
+    - CropPlanningRockSpringsRW-v1
+    - CropPlanningNewHollandRW-v1
+  year_windows:
+    - [1996, 2014]
+    - [1997, 2015]
+  seeds_per_combo: 1
+  seed_start: 2000

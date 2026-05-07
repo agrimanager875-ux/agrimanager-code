@@ -1,0 +1,18 @@
+Crop Name: millet
+
+Profile
+- Season type: short-season (TSUM total=1315 C.d)
+- Temperature adaptation: warm-adapted (TBASEM=12.00 C)
+- Development driver: temperature + daylength (IDSL=1, DLO=1.00 h)
+- Root/water trait: deep-rooted, more drought-tolerant (RDMCR=220.00 cm, DEPNR=4.50)
+- Assimilation trait: high assimilation potential (AMAX peak=85.00)
+- Storage allocation: late storage allocation (FOTB onset DVS=1.30)
+
+Nutrient capacity proxies (leaf maxima)
+- NMAXLV: DVS0=0.0600, DVS1=0.0200
+- PMAXLV: DVS0=0.0143, DVS1=0.0048
+- KMAXLV: DVS0=0.1200, DVS1=0.0400
+
+Use guidance
+- Treat this as prior knowledge for zero-shot policy transfer.
+- Final action should still adapt to current weather/soil observations.

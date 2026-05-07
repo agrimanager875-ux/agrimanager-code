@@ -1,0 +1,33 @@
+env_name: gym_dssat
+dataset_id: t31_cross_sim_gym_dssat
+validation_axis: simulator
+
+sampling:
+  generation_seed: 42
+
+env_id: maize-irrigation-v0
+llm_mode: true
+include_crop_traits: false
+objective_id: profit_max
+reward_params:
+  cost_n: 3.5
+  cost_p: 5.5
+  cost_k: 2.25
+  cost_water: 0.05
+turn_num: 24
+decision_interval: 10
+num_seasons: 1
+crop_name: maize
+
+env_params:
+  mode: all
+
+train_seeds:
+  count: 1600
+  base_seed: 42
+val_seeds:
+  count: 128
+  base_seed: 100042
+
+soil_variation:
+  enabled: false

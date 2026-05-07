@@ -1,0 +1,18 @@
+Crop Name: rapeseed
+
+Profile
+- Season type: short-season (TSUM total=1080 C.d)
+- Temperature adaptation: cool-adapted (TBASEM=0.00 C)
+- Development driver: temperature + daylength (IDSL=1, DLO=16.00 h)
+- Root/water trait: moderately deep-rooted, more drought-tolerant (RDMCR=125.00 cm, DEPNR=4.50)
+- Assimilation trait: moderate assimilation potential (AMAX peak=40.00)
+- Storage allocation: mid storage allocation (FOTB onset DVS=1.20)
+
+Nutrient capacity proxies (leaf maxima)
+- NMAXLV: DVS0=0.0600, DVS1=0.0200
+- PMAXLV: DVS0=0.0120, DVS1=0.0040
+- KMAXLV: DVS0=0.1140, DVS1=0.0380
+
+Use guidance
+- Treat this as prior knowledge for zero-shot policy transfer.
+- Final action should still adapt to current weather/soil observations.

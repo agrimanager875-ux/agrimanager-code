@@ -1,0 +1,11 @@
+# vLLM Offline Configuration Example (Direct LLM)
+model_provider: "vllm_offline"
+model_name: "Qwen/Qwen2.5-3B-Instruct"
+
+# vLLM Offline-specific parameters
+tensor_parallel_size: 1  # Number of GPUs for tensor parallelism
+gpu_memory_utilization: 0.9  # GPU memory utilization (0.0 to 1.0)
+trust_remote_code: true  # Whether to trust remote code in model repo
+dtype: "auto"  # Data type: "auto", "float16", "bfloat16", "float32"
+tokenizer_mode: "auto"  # Tokenizer mode: "auto", "slow"
+max_model_len: null  # Maximum sequence length (null for model default)

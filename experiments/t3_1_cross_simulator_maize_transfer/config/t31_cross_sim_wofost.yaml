@@ -1,0 +1,41 @@
+env_name: wofost_gym
+dataset_id: t31_cross_sim_wofost
+validation_axis: simulator
+
+source:
+  kind: weather_pool
+  path: agrimanager/weather_pool_maize
+
+sampling:
+  generation_seed: 42
+  splits:
+    train:
+      role: train
+      source_split: train
+      crops: [maize]
+      num_samples: 1600
+      labels:
+        simulator: wofost_gym
+    val:
+      role: validation
+      validation_set: wofost
+      source_split: val
+      crops: [maize]
+      num_samples: 128
+      labels:
+        simulator: wofost_gym
+env:
+  env_id: lnw-v0
+  wofost_gym_path: ../AgriManagerExternal/WOFOSTGym
+  llm_mode: true
+  intvn_interval: 10
+  turn_num: 24
+  scale_action_amounts_by_interval: true
+  objective_id: profit_max
+  reward_params:
+    cost_n: 3.5
+    cost_p: 5.5
+    cost_k: 2.25
+    cost_water: 0.05
+  include_crop_traits: false
+  include_variety_traits: false

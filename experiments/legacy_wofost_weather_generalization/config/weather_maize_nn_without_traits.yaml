@@ -1,0 +1,31 @@
+env_name: wofost_gym
+dataset_id: weather_maize_nn_without_traits
+source:
+  kind: weather_pool
+  path: agrimanager/wofost-weather-pool
+sampling:
+  generation_seed: 42
+  splits:
+    train:
+      crops:
+      - maize
+      num_samples: 3200
+    val:
+      crops:
+      - maize
+      num_samples: 128
+    test:
+      crops:
+      - maize
+      num_samples: 128
+env:
+  env_id: lnpkw-v0
+  wofost_gym_path: ../AgriManagerExternal/WOFOSTGym
+  llm_mode: false
+  intvn_interval: 10
+  turn_num: 24
+  scale_action_amounts_by_interval: true
+  fert_amount: 20.0
+  irrig_amount: 5.0
+  objective_id: profit_max
+  include_crop_traits: false

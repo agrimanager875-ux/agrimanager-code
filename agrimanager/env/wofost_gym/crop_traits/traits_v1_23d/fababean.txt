@@ -1,0 +1,18 @@
+Crop Name: fababean
+
+Profile
+- Season type: medium-season (TSUM total=2284 C.d)
+- Temperature adaptation: cool-adapted (TBASEM=0.00 C)
+- Development driver: temperature + daylength (IDSL=1, DLO=14.00 h)
+- Root/water trait: moderately deep-rooted, more drought-tolerant (RDMCR=100.00 cm, DEPNR=4.50)
+- Assimilation trait: lower assimilation potential (AMAX peak=35.00)
+- Storage allocation: mid storage allocation (FOTB onset DVS=1.00)
+
+Nutrient capacity proxies (leaf maxima)
+- NMAXLV: DVS0=0.0600, DVS1=0.0350
+- PMAXLV: DVS0=0.0096, DVS1=0.0056
+- KMAXLV: DVS0=0.0720, DVS1=0.0420
+
+Use guidance
+- Treat this as prior knowledge for zero-shot policy transfer.
+- Final action should still adapt to current weather/soil observations.

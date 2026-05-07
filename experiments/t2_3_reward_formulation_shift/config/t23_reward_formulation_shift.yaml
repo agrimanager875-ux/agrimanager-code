@@ -1,0 +1,125 @@
+env_name: wofost_gym
+dataset_id: t23_reward_formulation_shift
+validation_axis: reward_formulation
+
+source:
+  kind: weather_pool
+  path: agrimanager/weather_pool_maize
+
+sampling:
+  generation_seed: 42
+  splits:
+    train_yield_max:
+      role: train
+      source_split: train
+      crops: [maize]
+      num_samples: 534
+      labels:
+        reward_formulation: yield_max
+      env:
+        objective_id: yield_max
+        prompt_objective_id: yield_max
+
+    train_profit_max:
+      role: train
+      source_split: train
+      crops: [maize]
+      num_samples: 533
+      labels:
+        reward_formulation: profit_max
+      env:
+        objective_id: profit_max
+        prompt_objective_id: profit_max
+
+    train_water_stewardship:
+      role: train
+      source_split: train
+      crops: [maize]
+      num_samples: 533
+      labels:
+        reward_formulation: water_stewardship
+      env:
+        objective_id: water_stewardship
+        prompt_objective_id: water_stewardship
+
+    val_yield_max:
+      role: validation
+      validation_set: yield_max
+      source_split: val
+      crops: [maize]
+      num_samples: 128
+      labels:
+        reward_formulation: yield_max
+      env:
+        objective_id: yield_max
+        prompt_objective_id: yield_max
+
+    val_profit_max:
+      role: validation
+      validation_set: profit_max
+      source_split: val
+      crops: [maize]
+      num_samples: 128
+      labels:
+        reward_formulation: profit_max
+      env:
+        objective_id: profit_max
+        prompt_objective_id: profit_max
+
+    val_water_stewardship:
+      role: validation
+      validation_set: water_stewardship
+      source_split: val
+      crops: [maize]
+      num_samples: 128
+      labels:
+        reward_formulation: water_stewardship
+      env:
+        objective_id: water_stewardship
+        prompt_objective_id: water_stewardship
+
+    val_nutrient_stewardship:
+      role: validation
+      validation_set: nutrient_stewardship
+      source_split: val
+      crops: [maize]
+      num_samples: 128
+      labels:
+        reward_formulation: nutrient_stewardship
+      env:
+        objective_id: nutrient_stewardship
+        prompt_objective_id: nutrient_stewardship
+
+env:
+  env_id: lnpkw-v0
+  wofost_gym_path: ../AgriManagerExternal/WOFOSTGym
+  y_ref: 8500.0
+  y_ref_map_path: ../analysis/t23_y_ref/calibrated_y_ref.json
+  require_y_ref_map_file: false
+  require_y_ref_map_match: false
+  llm_mode: true
+  intvn_interval: 10
+  turn_num: 24
+  scale_action_amounts_by_interval: true
+  objective_id: yield_max
+  reward_params:
+    cost_n: 3.5
+    cost_p: 5.5
+    cost_k: 2.25
+    cost_water: 0.05
+    c_w: 0.05
+    tau_y: 0.80
+    water_budget_mm: 500.0
+    lambda_i: 0.10
+    beta_y: 4.0
+    beta_budget: 2.0
+    budget_n_kg_ha: 400.0
+    budget_p_kg_ha: 200.0
+    budget_k_kg_ha: 200.0
+    terminal_nutrient_min: 8.0
+    terminal_nutrient_max: 50.0
+    beta_application: 0.35
+    beta_low: 0.30
+    beta_high: 0.50
+  include_crop_traits: false
+  include_variety_traits: false

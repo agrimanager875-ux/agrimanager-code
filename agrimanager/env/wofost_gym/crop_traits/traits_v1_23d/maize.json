@@ -1,0 +1,53 @@
+{
+  "crop": "maize",
+  "variety": "maize_1",
+  "trait_schema": "traits_v1_23d",
+  "core_facts": {
+    "temperature": {
+      "TBASEM_C": 10.0,
+      "TEFFMX_C": 30.0
+    },
+    "phenology": {
+      "TSUMEM_Cd": 70.0,
+      "TSUM1_Cd": 750.0,
+      "TSUM2_Cd": 859.0,
+      "TSUM3_Cd": 600.0,
+      "TSUM_total_Cd": 1679.0,
+      "IDSL": 1.0,
+      "DLO_hr": 1.0,
+      "DLC_hr": 0.0
+    },
+    "root_and_water": {
+      "RDMCR_cm": 75.0,
+      "RRI_cm_per_day": 1.2,
+      "DEPNR": 4.5,
+      "CFET": 1.0,
+      "IAIRDU": 0.0
+    },
+    "nutrient_capacity_leaf": {
+      "NMAXLV_DVS0": 0.06,
+      "NMAXLV_DVS1": 0.02,
+      "PMAXLV_DVS0": 0.0144,
+      "PMAXLV_DVS1": 0.0048,
+      "KMAXLV_DVS0": 0.096,
+      "KMAXLV_DVS1": 0.032
+    },
+    "assimilation_and_partition": {
+      "AMAX_peak": 70.0,
+      "FOTB_storage_onset_DVS": 1.25
+    }
+  },
+  "derived_traits": {
+    "season_length_class": "short-season",
+    "temperature_adaptation": "warm-adapted",
+    "rooting_class": "shallow-rooted",
+    "water_stress_response": "more drought-tolerant",
+    "development_driver": "temperature + daylength",
+    "storage_allocation_timing": "late storage allocation",
+    "assimilation_class": "high assimilation potential"
+  },
+  "notes": [
+    "This card is generated from WOFOST parameter files only.",
+    "Trait labels are heuristic summaries of model parameters, not field trial guarantees."
+  ]
+}

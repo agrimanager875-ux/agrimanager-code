@@ -1,0 +1,18 @@
+Crop Name: seed_onion
+
+Profile
+- Season type: long-season (TSUM total=2410 C.d)
+- Temperature adaptation: cool-adapted (TBASEM=0.00 C)
+- Development driver: temperature + daylength (IDSL=1, DLO=14.00 h)
+- Root/water trait: shallow-rooted, more drought-sensitive (RDMCR=60.00 cm, DEPNR=3.00)
+- Assimilation trait: lower assimilation potential (AMAX peak=30.00)
+- Storage allocation: late storage allocation (FOTB onset DVS=1.27)
+
+Nutrient capacity proxies (leaf maxima)
+- NMAXLV: DVS0=0.0600, DVS1=0.0200
+- PMAXLV: DVS0=0.0110, DVS1=0.0040
+- KMAXLV: DVS0=0.1200, DVS1=0.0400
+
+Use guidance
+- Treat this as prior knowledge for zero-shot policy transfer.
+- Final action should still adapt to current weather/soil observations.

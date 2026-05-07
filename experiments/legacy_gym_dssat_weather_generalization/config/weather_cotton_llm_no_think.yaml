@@ -1,0 +1,27 @@
+env_name: gym_dssat
+dataset_id: weather_cotton_llm_no_think
+
+env_id: cotton-all-v0
+save_folder: /tmp/dssat_configs/
+llm_mode: true
+turn_num: 200
+decision_interval: 10
+require_think: false
+
+env_params:
+  mode: all
+  cultivar: cotton
+  random_weather: true
+
+train_seeds:
+  count: 3200
+  base_seed: 381000
+val_seeds:
+  count: 128
+  base_seed: 385000
+test_seeds:
+  count: 512
+  base_seed: 386000
+
+soil_variation:
+  enabled: false

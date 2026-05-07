@@ -1,0 +1,18 @@
+Crop Name: cotton
+
+Profile
+- Season type: long-season (TSUM total=2381 C.d)
+- Temperature adaptation: warm-adapted (TBASEM=10.00 C)
+- Development driver: temperature + daylength (IDSL=1, DLO=1.00 h)
+- Root/water trait: moderately deep-rooted, more drought-tolerant (RDMCR=120.00 cm, DEPNR=4.50)
+- Assimilation trait: moderate assimilation potential (AMAX peak=40.00)
+- Storage allocation: late storage allocation (FOTB onset DVS=1.70)
+
+Nutrient capacity proxies (leaf maxima)
+- NMAXLV: DVS0=0.0600, DVS1=0.0350
+- PMAXLV: DVS0=0.0109, DVS1=0.0064
+- KMAXLV: DVS0=0.0600, DVS1=0.0350
+
+Use guidance
+- Treat this as prior knowledge for zero-shot policy transfer.
+- Final action should still adapt to current weather/soil observations.

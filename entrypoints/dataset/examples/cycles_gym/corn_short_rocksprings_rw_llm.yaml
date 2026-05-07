@@ -1,0 +1,43 @@
+# Random-weather corn fertilization dataset at RockSprings.
+# Single-location LLM dataset for the CornShort RW environment with explicit
+# fertilization action settings and a fixed one-year horizon.
+env_name: cycles_gym
+dataset_id: corn_short_rocksprings_rw_llm
+
+base_config:
+  env_id: CornShortRockSpringsRW-v1
+  cycles_gym_path: ../AgriManagerExternal/CyclesGym
+  llm_mode: true
+  turn_num: 53
+  env_kwargs:
+    delta: 7
+    n_actions: 11
+    maxN: 150
+    start_year: 1980
+    end_year: 1980
+
+train_configs:
+  - seed: 0
+  - seed: 1
+  - seed: 2
+  - seed: 3
+  - seed: 4
+  - seed: 5
+  - seed: 6
+  - seed: 7
+
+val_configs:
+  - seed: 90
+  - seed: 91
+  - seed: 92
+  - seed: 93
+
+test_configs:
+  - seed: 100
+  - seed: 101
+  - seed: 102
+  - seed: 103
+  - seed: 104
+  - seed: 105
+  - seed: 106
+  - seed: 107

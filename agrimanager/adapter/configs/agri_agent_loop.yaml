@@ -1,0 +1,2 @@
+- name: agri_tool_agent
+  _target_: agrimanager.adapter.agent_loop.agent_loop.AgriToolAgentLoop

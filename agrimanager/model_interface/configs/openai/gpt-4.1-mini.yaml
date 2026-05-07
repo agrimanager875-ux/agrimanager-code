@@ -1,0 +1,8 @@
+# OpenAI Configuration Example
+model_provider: "openai"
+model_name: "gpt-4.1-mini"
+
+# Number of parallel workers for API calls
+num_workers: 64
+
+# You need to set your OpenAI API key in the environment variable OPENAI_API_KEY

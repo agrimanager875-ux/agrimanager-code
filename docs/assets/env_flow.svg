@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 680" width="900" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#444"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="20" y="28" font-size="17" font-weight="600" fill="#222">Dataset build → training: how an env plugs in</text>
+  <text x="20" y="50" font-size="13" fill="#666">Two interfaces. The parquet is the seam — it carries env_name across them.</text>
+
+  <!-- Legend -->
+  <rect x="20" y="66" width="14" height="12" rx="2" fill="#f2f2f2" stroke="#999" stroke-width="1"/>
+  <text x="40" y="76" font-size="11" fill="#555">framework</text>
+  <rect x="116" y="66" width="14" height="12" rx="2" fill="#eaf5ea" stroke="#4a9450" stroke-width="1"/>
+  <text x="136" y="76" font-size="11" fill="#555">env code (you write this)</text>
+  <rect x="296" y="66" width="14" height="12" rx="2" fill="#fff5cf" stroke="#c9a227" stroke-width="1"/>
+  <text x="316" y="76" font-size="11" fill="#555">parquet (the contract)</text>
+
+  <!-- ============ BUILD TIME ============ -->
+  <text x="20" y="108" font-size="11" font-weight="700" fill="#888" letter-spacing="2">BUILD TIME</text>
+
+  <!-- Box 1: config YAML -->
+  <rect x="60" y="118" width="420" height="42" rx="6" fill="#f2f2f2" stroke="#999" stroke-width="1.3"/>
+  <text x="270" y="138" font-size="13" font-weight="600" text-anchor="middle" fill="#222">dataset config YAML</text>
+  <text x="270" y="153" font-size="11" text-anchor="middle" fill="#555">env_name + scenario parameters</text>
+
+  <line x1="270" y1="160" x2="270" y2="178" stroke="#444" stroke-width="1.4" marker-end="url(#arr)"/>
+
+  <!-- Box 2: build.sh -->
+  <rect x="60" y="180" width="420" height="42" rx="6" fill="#f2f2f2" stroke="#999" stroke-width="1.3"/>
+  <text x="270" y="200" font-size="13" text-anchor="middle" font-family="ui-monospace, monospace" fill="#222">entrypoints/dataset/build.sh</text>
+  <text x="270" y="215" font-size="11" text-anchor="middle" fill="#555">thin shell wrapper · calls the Python router</text>
+
+  <line x1="270" y1="222" x2="270" y2="240" stroke="#444" stroke-width="1.4" marker-end="url(#arr)"/>
+
+  <!-- Box 3: router -->
+  <rect x="60" y="242" width="420" height="48" rx="6" fill="#f2f2f2" stroke="#999" stroke-width="1.3"/>
+  <text x="270" y="262" font-size="13" text-anchor="middle" font-family="ui-monospace, monospace" fill="#222">agrimanager.env.create_dataset.generate()</text>
+  <text x="270" y="279" font-size="11" text-anchor="middle" fill="#555">reads env_name · imports the env module dynamically</text>
+
+  <line x1="270" y1="290" x2="270" y2="308" stroke="#444" stroke-width="1.4" marker-end="url(#arr)"/>
+
+  <!-- Box 4: env-specific generator -->
+  <rect x="60" y="310" width="420" height="48" rx="6" fill="#eaf5ea" stroke="#4a9450" stroke-width="1.5"/>
+  <text x="270" y="330" font-size="13" font-weight="600" text-anchor="middle" fill="#222">&lt;Env&gt;DatasetGenerator</text>
+  <text x="270" y="347" font-size="11" text-anchor="middle" fill="#555">subclass of BaseDatasetGenerator</text>
+
+  <!-- Interface callout: BaseDatasetGenerator -->
+  <rect x="520" y="242" width="360" height="116" rx="6" fill="#fafafa" stroke="#bbb" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="700" y="262" font-size="12" font-weight="600" text-anchor="middle" fill="#333">interface: BaseDatasetGenerator</text>
+  <text x="538" y="286" font-size="11" font-family="ui-monospace, monospace" fill="#222">build_split_records(split)</text>
+  <text x="548" y="300" font-size="10" fill="#888">must implement — return list of env_configs</text>
+  <text x="538" y="322" font-size="11" font-family="ui-monospace, monospace" fill="#222">_build_initial_prompt(env_config)</text>
+  <text x="548" y="336" font-size="10" fill="#888">override — domain-specific system prompt</text>
+  <text x="538" y="352" font-size="11" font-family="ui-monospace, monospace" fill="#222">splits()</text>
+
+  <!-- arrow to parquet -->
+  <line x1="270" y1="358" x2="270" y2="386" stroke="#444" stroke-width="1.4" marker-end="url(#arr)"/>
+
+  <!-- ============ PARQUET (the seam) ============ -->
+  <rect x="40" y="388" width="840" height="60" rx="8" fill="#fff5cf" stroke="#c9a227" stroke-width="2"/>
+  <text x="460" y="410" font-size="14" font-weight="700" text-anchor="middle" fill="#222">parquet artifact — train.parquet · val.parquet · test.parquet</text>
+  <text x="460" y="430" font-size="11" text-anchor="middle" font-family="ui-monospace, monospace" fill="#333">each row: extra_info.interaction_kwargs.env_config = {env_name, ...}</text>
+
+  <!-- arrow from parquet -->
+  <line x1="270" y1="448" x2="270" y2="478" stroke="#444" stroke-width="1.4" marker-end="url(#arr)"/>
+
+  <!-- ============ TRAINING TIME ============ -->
+  <text x="20" y="472" font-size="11" font-weight="700" fill="#888" letter-spacing="2">TRAINING TIME</text>
+
+  <!-- Box 5: train.sh -->
+  <rect x="60" y="482" width="420" height="42" rx="6" fill="#f2f2f2" stroke="#999" stroke-width="1.3"/>
+  <text x="270" y="502" font-size="13" text-anchor="middle" font-family="ui-monospace, monospace" fill="#222">entrypoints/train/train.sh</text>
+  <text x="270" y="517" font-size="11" text-anchor="middle" fill="#555">launches agrimanager.adapter.trainer.main_ppo</text>
+
+  <line x1="270" y1="524" x2="270" y2="542" stroke="#444" stroke-width="1.4" marker-end="url(#arr)"/>
+
+  <!-- Box 6: AgriInteraction -->
+  <rect x="60" y="544" width="420" height="48" rx="6" fill="#f2f2f2" stroke="#999" stroke-width="1.3"/>
+  <text x="270" y="564" font-size="13" font-weight="600" text-anchor="middle" fill="#222">AgriInteraction (adapter)</text>
+  <text x="270" y="581" font-size="11" text-anchor="middle" fill="#555">per row: reads env_name · calls create_environment(...)</text>
+
+  <line x1="270" y1="592" x2="270" y2="610" stroke="#444" stroke-width="1.4" marker-end="url(#arr)"/>
+
+  <!-- Box 7: env instance -->
+  <rect x="60" y="612" width="420" height="48" rx="6" fill="#eaf5ea" stroke="#4a9450" stroke-width="1.5"/>
+  <text x="270" y="632" font-size="13" font-weight="600" text-anchor="middle" fill="#222">&lt;Env&gt; instance</text>
+  <text x="270" y="649" font-size="11" text-anchor="middle" fill="#555">adapter drives it turn-by-turn via step(action_text)</text>
+
+  <!-- Interface callout: BaseEnv -->
+  <rect x="520" y="544" width="360" height="116" rx="6" fill="#fafafa" stroke="#bbb" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="700" y="564" font-size="12" font-weight="600" text-anchor="middle" fill="#333">interface: BaseEnv</text>
+  <text x="538" y="590" font-size="11" font-family="ui-monospace, monospace" fill="#222">reset() → (obs, info)</text>
+  <text x="538" y="612" font-size="11" font-family="ui-monospace, monospace" fill="#222">step(action) → (obs, reward, done, info)</text>
+  <text x="538" y="634" font-size="11" font-family="ui-monospace, monospace" fill="#222">system_prompt() → str</text>
+  <text x="538" y="652" font-size="10" fill="#888">action arrives as text · reward is a scalar per turn</text>
+</svg>

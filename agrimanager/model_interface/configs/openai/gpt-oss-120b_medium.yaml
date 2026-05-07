@@ -1,0 +1,8 @@
+model_provider: "openai"
+model_name: "gpt-oss-120b_medium"
+
+num_workers: 64
+
+# Set these to your gpt-oss endpoint
+# base_url: "http://your-gpt-oss-host:port/v1"
+# api_key: "your-api-key"

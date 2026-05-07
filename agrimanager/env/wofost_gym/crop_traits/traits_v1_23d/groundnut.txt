@@ -1,0 +1,18 @@
+Crop Name: groundnut
+
+Profile
+- Season type: short-season (TSUM total=1672 C.d)
+- Temperature adaptation: warm-adapted (TBASEM=10.00 C)
+- Development driver: temperature + daylength (IDSL=1, DLO=1.00 h)
+- Root/water trait: shallow-rooted, moderately drought-tolerant (RDMCR=60.00 cm, DEPNR=4.00)
+- Assimilation trait: moderate assimilation potential (AMAX peak=50.00)
+- Storage allocation: mid storage allocation (FOTB onset DVS=1.10)
+
+Nutrient capacity proxies (leaf maxima)
+- NMAXLV: DVS0=0.0600, DVS1=0.0300
+- PMAXLV: DVS0=0.0060, DVS1=0.0030
+- KMAXLV: DVS0=0.1042, DVS1=0.0521
+
+Use guidance
+- Treat this as prior knowledge for zero-shot policy transfer.
+- Final action should still adapt to current weather/soil observations.

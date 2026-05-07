@@ -1,0 +1,58 @@
+# Random-weather crop-planning dataset at RockSprings.
+# Single-location LLM dataset for 19-year crop-rotation episodes using the
+# legacy RockSprings crop set and weather configuration.
+env_name: cycles_gym
+dataset_id: crop_planning_rocksprings_rw_llm
+
+base_config:
+  env_id: CropPlanningRockSpringsRW-v1
+  cycles_gym_path: ../AgriManagerExternal/CyclesGym
+  llm_mode: true
+  turn_num: 19
+  env_kwargs:
+    start_year: 1980
+    end_year: 1998
+    rotation_crops:
+      - CornRM.100
+      - SoybeanMG.3
+    weather_generator_kwargs:
+      n_weather_samples: 2
+      sampling_start_year: 1980
+      sampling_end_year: 1998
+      base_weather_file: ../AgriManagerExternal/CyclesGym/cycles/input/RockSprings.weather
+      target_year_range:
+        - 1980
+        - 1981
+        - 1982
+        - 1983
+        - 1984
+        - 1985
+        - 1986
+        - 1987
+        - 1988
+        - 1989
+        - 1990
+        - 1991
+        - 1992
+        - 1993
+        - 1994
+        - 1995
+        - 1996
+        - 1997
+        - 1998
+
+train_configs:
+  - seed: 0
+  - seed: 1
+  - seed: 2
+  - seed: 3
+
+val_configs:
+  - seed: 90
+  - seed: 91
+
+test_configs:
+  - seed: 100
+  - seed: 101
+  - seed: 102
+  - seed: 103

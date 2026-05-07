@@ -1,0 +1,36 @@
+{
+  "core_facts": {
+    "assimilation_and_partition": {
+      "AMAX_peak": 40.0,
+      "EFF_peak": 0.54,
+      "FOTB_peak": 1.0,
+      "FOTB_storage_onset_DVS": 0.895
+    },
+    "growth": {
+      "RGRLAI_per_day": 0.008,
+      "TDWI_kg_ha": 50.0
+    },
+    "phenology": {
+      "DLO_hr": 11.5,
+      "TSUM1_Cd": 1420.0,
+      "TSUM2_Cd": 630.0,
+      "TSUM3_Cd": 350.0,
+      "TSUM_total_Cd": 2400.0,
+      "VERNBASE_d": 14.0,
+      "VERNSAT_d": 70.0
+    }
+  },
+  "crop": "rice",
+  "derived_traits": {
+    "leaf_expansion": "moderate",
+    "season_length": "long",
+    "storage_allocation": "early"
+  },
+  "notes": [
+    "This card is generated from WOFOST rice variety parameters only.",
+    "Trait labels summarize simulator parameters, not field-trial cultivar guarantees."
+  ],
+  "trait_key": "rice__rice_7",
+  "trait_schema": "rice_variety_traits_v1",
+  "variety": "rice_7"
+}

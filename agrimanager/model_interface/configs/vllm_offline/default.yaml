@@ -1,0 +1,10 @@
+# Default vLLM Offline config — use --model-path to specify the model
+model_provider: "vllm_offline"
+model_name: "Qwen/Qwen3-4B-Instruct-2507"
+
+tensor_parallel_size: 1
+gpu_memory_utilization: 0.9
+trust_remote_code: true
+dtype: "auto"
+tokenizer_mode: "auto"
+max_model_len: 30000

@@ -1,0 +1,63 @@
+# Repo-local hidden caches
+.cache/
+/.pytest_cache/
+/deploy_artifacts/
+
+# Local simulator/runtime installs
+/AgriManagerExternal/
+/spack/
+/.spack-user-cache/
+/.spack-user-config/
+
+# Ignore Python bytecode cache for environment module
+__pycache__/
+
+# DATA files
+data/
+
+# Results files
+experiments/**/results/
+smoke_tests/**/results/
+experiments/**/analysis/
+
+# Ignore egg-info
+*.egg-info/
+
+# Ignore logs
+logs/
+/install_logs/
+/inference_rollout.log
+experiments/**/logs/
+smoke_tests/**/logs/
+
+# Tools
+Tools.ipynb 
+
+# verl training config output
+outputs/
+
+# Experiment-local artifacts
+experiments/**/data/
+smoke_tests/**/data/
+
+# checkpoints
+checkpoints/
+
+# Weather pool (downloaded from HuggingFace)
+integrations/wofost_gym/dataset_tools/weather_pool_20crop_3200_val128_test512/
+integrations/wofost_gym/dataset_tools/build_weather_pool_20crop_3200_val128_test512.slurm
+
+# Local SLURM job files
+*.slurm
+
+# Local agent instructions
+/AGENTS.md
+
+# Old
+old/
+
+# Local run archives and tracking outputs
+experiments/_archived_*/
+experiments/**/_archive_*/
+/slurm_logs/
+/wandb/

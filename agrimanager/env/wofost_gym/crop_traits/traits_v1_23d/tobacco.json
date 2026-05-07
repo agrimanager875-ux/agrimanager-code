@@ -1,0 +1,53 @@
+{
+  "crop": "tobacco",
+  "variety": "tobacco_1",
+  "trait_schema": "traits_v1_23d",
+  "core_facts": {
+    "temperature": {
+      "TBASEM_C": 0.0,
+      "TEFFMX_C": 0.0
+    },
+    "phenology": {
+      "TSUMEM_Cd": 1.0,
+      "TSUM1_Cd": 1948.0,
+      "TSUM2_Cd": 1948.0,
+      "TSUM3_Cd": 1000.0,
+      "TSUM_total_Cd": 3897.0,
+      "IDSL": 1.0,
+      "DLO_hr": 1.0,
+      "DLC_hr": 0.0
+    },
+    "root_and_water": {
+      "RDMCR_cm": 70.0,
+      "RRI_cm_per_day": 1.2,
+      "DEPNR": 4.5,
+      "CFET": 1.0,
+      "IAIRDU": 0.0
+    },
+    "nutrient_capacity_leaf": {
+      "NMAXLV_DVS0": 0.06,
+      "NMAXLV_DVS1": 0.04,
+      "PMAXLV_DVS0": 0.0078,
+      "PMAXLV_DVS1": 0.0052,
+      "KMAXLV_DVS0": 0.071,
+      "KMAXLV_DVS1": 0.048
+    },
+    "assimilation_and_partition": {
+      "AMAX_peak": 25.0,
+      "FOTB_storage_onset_DVS": 2.0
+    }
+  },
+  "derived_traits": {
+    "season_length_class": "long-season",
+    "temperature_adaptation": "cool-adapted",
+    "rooting_class": "shallow-rooted",
+    "water_stress_response": "more drought-tolerant",
+    "development_driver": "temperature + daylength",
+    "storage_allocation_timing": "late storage allocation",
+    "assimilation_class": "lower assimilation potential"
+  },
+  "notes": [
+    "This card is generated from WOFOST parameter files only.",
+    "Trait labels are heuristic summaries of model parameters, not field trial guarantees."
+  ]
+}

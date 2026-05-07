@@ -1,0 +1,53 @@
+{
+  "crop": "mungbean",
+  "variety": "mungbean_1",
+  "trait_schema": "traits_v1_23d",
+  "core_facts": {
+    "temperature": {
+      "TBASEM_C": 10.0,
+      "TEFFMX_C": 30.0
+    },
+    "phenology": {
+      "TSUMEM_Cd": 60.0,
+      "TSUM1_Cd": 640.0,
+      "TSUM2_Cd": 753.0,
+      "TSUM3_Cd": 550.0,
+      "TSUM_total_Cd": 1453.0,
+      "IDSL": 1.0,
+      "DLO_hr": 1.0,
+      "DLC_hr": 0.0
+    },
+    "root_and_water": {
+      "RDMCR_cm": 100.0,
+      "RRI_cm_per_day": 1.2,
+      "DEPNR": 3.5,
+      "CFET": 1.0,
+      "IAIRDU": 0.0
+    },
+    "nutrient_capacity_leaf": {
+      "NMAXLV_DVS0": 0.06,
+      "NMAXLV_DVS1": 0.045,
+      "PMAXLV_DVS0": 0.0046,
+      "PMAXLV_DVS1": 0.0034,
+      "KMAXLV_DVS0": 0.045,
+      "KMAXLV_DVS1": 0.0338
+    },
+    "assimilation_and_partition": {
+      "AMAX_peak": 37.0,
+      "FOTB_storage_onset_DVS": 1.45
+    }
+  },
+  "derived_traits": {
+    "season_length_class": "short-season",
+    "temperature_adaptation": "warm-adapted",
+    "rooting_class": "moderately deep-rooted",
+    "water_stress_response": "moderately drought-tolerant",
+    "development_driver": "temperature + daylength",
+    "storage_allocation_timing": "late storage allocation",
+    "assimilation_class": "lower assimilation potential"
+  },
+  "notes": [
+    "This card is generated from WOFOST parameter files only.",
+    "Trait labels are heuristic summaries of model parameters, not field trial guarantees."
+  ]
+}

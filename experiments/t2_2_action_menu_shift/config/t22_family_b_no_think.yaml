@@ -1,0 +1,113 @@
+env_name: wofost_gym
+dataset_id: t22_family_b_no_think
+validation_axis: action_menu
+
+source:
+  kind: weather_pool
+  path: agrimanager/weather_pool_maize
+
+sampling:
+  generation_seed: 42
+  scenario_sets:
+    train_base:
+      source_split: train
+      crops: [maize]
+      num_samples: 800
+
+    val_base:
+      source_split: val
+      crops: [maize]
+      num_samples: 128
+
+  splits:
+    train_lnpk:
+      role: train
+      scenario_set: train_base
+      labels:
+        action_menu: lnpk
+        action_schema: lnpk
+        prompt_condition: clean
+      env:
+        env_id: lnpk-v0
+
+    train_lw:
+      role: train
+      scenario_set: train_base
+      labels:
+        action_menu: lw
+        action_schema: lw
+        prompt_condition: clean
+      env:
+        env_id: lw-v0
+
+    val_lnpkw:
+      role: validation
+      validation_set: lnpkw
+      scenario_set: val_base
+      labels:
+        action_menu: lnpkw
+        action_schema: lnpkw
+        prompt_condition: clean
+      env:
+        env_id: lnpkw-v0
+
+    val_lnpk:
+      role: validation
+      validation_set: lnpk
+      scenario_set: val_base
+      labels:
+        action_menu: lnpk
+        action_schema: lnpk
+        prompt_condition: clean
+      env:
+        env_id: lnpk-v0
+
+    val_lnw:
+      role: validation
+      validation_set: lnw
+      scenario_set: val_base
+      labels:
+        action_menu: lnw
+        action_schema: lnw
+        prompt_condition: clean
+      env:
+        env_id: lnw-v0
+
+    val_ln:
+      role: validation
+      validation_set: ln
+      scenario_set: val_base
+      labels:
+        action_menu: ln
+        action_schema: ln
+        prompt_condition: clean
+      env:
+        env_id: ln-v0
+
+    val_lw:
+      role: validation
+      validation_set: lw
+      scenario_set: val_base
+      labels:
+        action_menu: lw
+        action_schema: lw
+        prompt_condition: clean
+      env:
+        env_id: lw-v0
+
+env:
+  wofost_gym_path: ../AgriManagerExternal/WOFOSTGym
+  llm_mode: true
+  intvn_interval: 10
+  turn_num: 24
+  scale_action_amounts_by_interval: true
+  objective_id: profit_max
+  reward_params:
+    cost_n: 3.5
+    cost_p: 5.5
+    cost_k: 2.25
+    cost_water: 0.05
+  include_crop_traits: false
+  require_think: false
+  thinking_mode: think
+  think_tag: tool_call

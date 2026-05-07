@@ -1,0 +1,28 @@
+defaults:
+  - override hydra/job_logging: console_only
+
+data:
+  inference_file: smoke_tests/wofost_gym/data/wofost_gym_smoke_nn/val.parquet
+  inference_sets: {}
+  validation_axis: null
+
+agent:
+  path: null  # path to agent.zip — override via CLI
+  vecnormalize_path: null
+
+runtime:
+  seed: 0
+  device: auto
+  split_by_group: null
+  deterministic: false
+  num_repeats: 1
+
+output:
+  dir: smoke_tests/wofost_gym/results/nn_eval/wofost_nn_default
+
+hydra:
+  run:
+    dir: .
+  output_subdir: null
+  job:
+    chdir: false

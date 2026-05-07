@@ -1,0 +1,51 @@
+{
+  "crop": "cassava",
+  "variety": "cassava_1",
+  "trait_schema": "traits_v1_6d",
+  "core_facts": {
+    "decision_axes": {
+      "season_urgency": 0.875909090909091,
+      "development_constraint": 0.6833333333333333,
+      "water_priority": 0.22647058823529412,
+      "nitrogen_priority": 0.47,
+      "phosphorus_priority": 0.9137931034482758,
+      "potassium_priority": 0.35462713387241684
+    }
+  },
+  "source_facts": {
+    "season_urgency": {
+      "TSUM_total_Cd": 550.0,
+      "FOTB_storage_onset_DVS": 1.29
+    },
+    "development_constraint": {
+      "TBASEM_C": 10.0,
+      "IDSL": 1.0
+    },
+    "water_priority": {
+      "DEPNR": 4.5,
+      "RDMCR_cm": 100.0,
+      "CFET": 1.0,
+      "IAIRDU": 0.0
+    },
+    "nutrient_priority": {
+      "NMAXLV_DVS0": 0.06,
+      "NMAXLV_DVS1": 0.03,
+      "PMAXLV_DVS0": 0.0176,
+      "PMAXLV_DVS1": 0.0088,
+      "KMAXLV_DVS0": 0.06,
+      "KMAXLV_DVS1": 0.03
+    }
+  },
+  "derived_traits": {
+    "season_urgency_level": "high",
+    "development_constraint_level": "high",
+    "water_priority_level": "low",
+    "nitrogen_priority_level": "medium",
+    "phosphorus_priority_level": "high",
+    "potassium_priority_level": "medium"
+  },
+  "notes": [
+    "This 6D card is derived from the raw WOFOST parameter card for policy transfer.",
+    "The axes are heuristic decision-facing summaries, not causal guarantees."
+  ]
+}

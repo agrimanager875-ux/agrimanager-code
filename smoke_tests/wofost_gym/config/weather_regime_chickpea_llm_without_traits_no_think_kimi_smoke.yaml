@@ -1,0 +1,68 @@
+env_name: wofost_gym
+dataset_id: weather_regime_chickpea_llm_without_traits_no_think_kimi_smoke
+validation_axis: weather_regime
+source:
+  kind: weather_pool
+  path: agrimanager/wofost-weather-regime-pool
+sampling:
+  generation_seed: 42
+  splits:
+    train:
+      role: train
+      crops:
+      - chickpea
+      num_samples: 1
+      labels:
+        weather_regime: id
+    val_id:
+      role: validation
+      validation_set: id
+      crops:
+      - chickpea
+      num_samples: 1
+      labels:
+        weather_regime: id
+    val_drought:
+      role: validation
+      validation_set: drought
+      crops:
+      - chickpea
+      num_samples: 1
+      labels:
+        weather_regime: drought
+    val_wet:
+      role: validation
+      validation_set: wet
+      crops:
+      - chickpea
+      num_samples: 1
+      labels:
+        weather_regime: wet
+    val_hot:
+      role: validation
+      validation_set: hot
+      crops:
+      - chickpea
+      num_samples: 1
+      labels:
+        weather_regime: hot
+    val_cold:
+      role: validation
+      validation_set: cold
+      crops:
+      - chickpea
+      num_samples: 1
+      labels:
+        weather_regime: cold
+env:
+  env_id: lnpkw-v0
+  wofost_gym_path: ../AgriManagerExternal/WOFOSTGym
+  llm_mode: true
+  intvn_interval: 10
+  turn_num: 24
+  scale_action_amounts_by_interval: true
+  objective_id: profit_max
+  include_crop_traits: false
+  require_think: false
+  thinking_mode: think
+  think_tag: tool_call

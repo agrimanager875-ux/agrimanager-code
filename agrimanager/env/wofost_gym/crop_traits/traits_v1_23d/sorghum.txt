@@ -1,0 +1,18 @@
+Crop Name: sorghum
+
+Profile
+- Season type: short-season (TSUM total=1400 C.d)
+- Temperature adaptation: warm-adapted (TBASEM=10.00 C)
+- Development driver: temperature + daylength (IDSL=1, DLO=1.00 h)
+- Root/water trait: deep-rooted, more drought-tolerant (RDMCR=150.00 cm, DEPNR=5.00)
+- Assimilation trait: high assimilation potential (AMAX peak=70.00)
+- Storage allocation: late storage allocation (FOTB onset DVS=1.35)
+
+Nutrient capacity proxies (leaf maxima)
+- NMAXLV: DVS0=0.0600, DVS1=0.0200
+- PMAXLV: DVS0=0.0125, DVS1=0.0042
+- KMAXLV: DVS0=0.1200, DVS1=0.0400
+
+Use guidance
+- Treat this as prior knowledge for zero-shot policy transfer.
+- Final action should still adapt to current weather/soil observations.

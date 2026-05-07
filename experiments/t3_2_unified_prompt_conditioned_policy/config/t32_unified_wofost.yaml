@@ -1,0 +1,239 @@
+env_name: wofost_gym
+dataset_id: t32_unified_wofost
+validation_axis: schema_tuple
+
+source:
+  kind: weather_pool
+  path: agrimanager/weather_pool_maize
+
+sampling:
+  generation_seed: 42
+  scenario_sets:
+    train_base:
+      source_split: train
+      crops: [maize]
+      num_samples: 400
+
+    val_base:
+      source_split: val
+      crops: [maize]
+      num_samples: 128
+
+  splits:
+    train_wofost_lnpkw_yield:
+      role: train
+      scenario_set: train_base
+      labels:
+        schema_tuple: wofost_s1_lnpkw_yield
+        simulator: wofost_gym
+        observation_schema: S1_full_current
+        action_menu: lnpkw
+        action_schema: lnpkw
+        reward_formulation: yield_max
+        callback_family: train_source
+      env:
+        env_id: lnpkw-v0
+        objective_id: yield_max
+        prompt_objective_id: yield_max
+
+    train_wofost_lnpkw_profit:
+      role: train
+      scenario_set: train_base
+      labels:
+        schema_tuple: wofost_s1_lnpkw_profit
+        simulator: wofost_gym
+        observation_schema: S1_full_current
+        action_menu: lnpkw
+        action_schema: lnpkw
+        reward_formulation: profit_max
+        callback_family: train_source
+      env:
+        env_id: lnpkw-v0
+        objective_id: profit_max
+        prompt_objective_id: profit_max
+
+    train_wofost_lnpkw_water:
+      role: train
+      scenario_set: train_base
+      labels:
+        schema_tuple: wofost_s1_lnpkw_water
+        simulator: wofost_gym
+        observation_schema: S1_full_current
+        action_menu: lnpkw
+        action_schema: lnpkw
+        reward_formulation: water_stewardship
+        callback_family: train_source
+      env:
+        env_id: lnpkw-v0
+        objective_id: water_stewardship
+        prompt_objective_id: water_stewardship
+
+    train_wofost_lnpk_profit:
+      role: train
+      scenario_set: train_base
+      labels:
+        schema_tuple: wofost_s1_lnpk_profit
+        simulator: wofost_gym
+        observation_schema: S1_full_current
+        action_menu: lnpk
+        action_schema: lnpk
+        reward_formulation: profit_max
+        callback_family: train_source
+      env:
+        env_id: lnpk-v0
+        objective_id: profit_max
+        prompt_objective_id: profit_max
+
+    train_wofost_lnpk_nutrient:
+      role: train
+      scenario_set: train_base
+      labels:
+        schema_tuple: wofost_s1_lnpk_nutrient
+        simulator: wofost_gym
+        observation_schema: S1_full_current
+        action_menu: lnpk
+        action_schema: lnpk
+        reward_formulation: nutrient_stewardship
+        callback_family: train_source
+      env:
+        env_id: lnpk-v0
+        objective_id: nutrient_stewardship
+        prompt_objective_id: nutrient_stewardship
+
+    train_wofost_lnw_yield:
+      role: train
+      scenario_set: train_base
+      labels:
+        schema_tuple: wofost_s1_lnw_yield
+        simulator: wofost_gym
+        observation_schema: S1_full_current
+        action_menu: lnw
+        action_schema: lnw
+        reward_formulation: yield_max
+        callback_family: train_source
+      env:
+        env_id: lnw-v0
+        objective_id: yield_max
+        prompt_objective_id: yield_max
+
+    val_wofost_lnpkw_profit:
+      role: validation
+      validation_set: seen_wofost_lnpkw_profit
+      scenario_set: val_base
+      labels:
+        schema_tuple: wofost_s1_lnpkw_profit
+        simulator: wofost_gym
+        observation_schema: S1_full_current
+        action_menu: lnpkw
+        action_schema: lnpkw
+        reward_formulation: profit_max
+        callback_family: seen_control
+      env:
+        env_id: lnpkw-v0
+        objective_id: profit_max
+        prompt_objective_id: profit_max
+
+    val_wofost_lnpk_profit:
+      role: validation
+      validation_set: seen_wofost_lnpk_profit
+      scenario_set: val_base
+      labels:
+        schema_tuple: wofost_s1_lnpk_profit
+        simulator: wofost_gym
+        observation_schema: S1_full_current
+        action_menu: lnpk
+        action_schema: lnpk
+        reward_formulation: profit_max
+        callback_family: seen_control
+      env:
+        env_id: lnpk-v0
+        objective_id: profit_max
+        prompt_objective_id: profit_max
+
+    val_wofost_lnw_yield:
+      role: validation
+      validation_set: seen_wofost_lnw_yield
+      scenario_set: val_base
+      labels:
+        schema_tuple: wofost_s1_lnw_yield
+        simulator: wofost_gym
+        observation_schema: S1_full_current
+        action_menu: lnw
+        action_schema: lnw
+        reward_formulation: yield_max
+        callback_family: seen_control
+      env:
+        env_id: lnw-v0
+        objective_id: yield_max
+        prompt_objective_id: yield_max
+
+    val_wofost_lnw_profit:
+      role: validation
+      validation_set: heldout_wofost_lnw_profit
+      scenario_set: val_base
+      labels:
+        schema_tuple: wofost_s1_lnw_profit
+        simulator: wofost_gym
+        observation_schema: S1_full_current
+        action_menu: lnw
+        action_schema: lnw
+        reward_formulation: profit_max
+        callback_family: t22_t31_callback
+      env:
+        env_id: lnw-v0
+        objective_id: profit_max
+        prompt_objective_id: profit_max
+
+    val_wofost_lnpkw_nutrient:
+      role: validation
+      validation_set: heldout_wofost_lnpkw_nutrient
+      scenario_set: val_base
+      labels:
+        schema_tuple: wofost_s1_lnpkw_nutrient
+        simulator: wofost_gym
+        observation_schema: S1_full_current
+        action_menu: lnpkw
+        action_schema: lnpkw
+        reward_formulation: nutrient_stewardship
+        callback_family: t23_callback
+      env:
+        env_id: lnpkw-v0
+        objective_id: nutrient_stewardship
+        prompt_objective_id: nutrient_stewardship
+
+env:
+  env_id: lnpkw-v0
+  wofost_gym_path: ../AgriManagerExternal/WOFOSTGym
+  llm_mode: true
+  intvn_interval: 10
+  turn_num: 24
+  scale_action_amounts_by_interval: true
+  objective_id: profit_max
+  prompt_objective_id: profit_max
+  y_ref: 8500.0
+  y_ref_map_path: ../../t2_3_reward_formulation_shift/analysis/t23_y_ref/calibrated_y_ref.json
+  require_y_ref_map_file: false
+  require_y_ref_map_match: false
+  reward_params:
+    cost_n: 3.5
+    cost_p: 5.5
+    cost_k: 2.25
+    cost_water: 0.05
+    c_w: 0.05
+    tau_y: 0.80
+    water_budget_mm: 500.0
+    lambda_i: 0.10
+    beta_y: 4.0
+    beta_budget: 2.0
+    budget_n_kg_ha: 400.0
+    budget_p_kg_ha: 200.0
+    budget_k_kg_ha: 200.0
+    terminal_nutrient_min: 8.0
+    terminal_nutrient_max: 50.0
+    beta_application: 0.35
+    beta_low: 0.30
+    beta_high: 0.50
+  include_crop_traits: false
+  include_variety_traits: false
+  observation_schema_name: S1_full_current
+  prompt_observation_fields: [FIN, DVS, WSO, NAVAIL, PAVAIL, KAVAIL, SM, TOTN, TOTP, TOTK, TOTIRRIG, IRRAD, TEMP, RAIN, DAYS]

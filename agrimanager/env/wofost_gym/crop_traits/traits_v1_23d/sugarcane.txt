@@ -1,0 +1,18 @@
+Crop Name: sugarcane
+
+Profile
+- Season type: long-season (TSUM total=6523 C.d)
+- Temperature adaptation: warm-adapted (TBASEM=10.00 C)
+- Development driver: temperature + daylength (IDSL=1, DLO=1.00 h)
+- Root/water trait: deep-rooted, more drought-tolerant (RDMCR=200.00 cm, DEPNR=5.00)
+- Assimilation trait: high assimilation potential (AMAX peak=70.00)
+- Storage allocation: mid storage allocation (FOTB onset DVS=1.10)
+
+Nutrient capacity proxies (leaf maxima)
+- NMAXLV: DVS0=0.0600, DVS1=0.0200
+- PMAXLV: DVS0=0.0109, DVS1=0.0036
+- KMAXLV: DVS0=0.1040, DVS1=0.0350
+
+Use guidance
+- Treat this as prior knowledge for zero-shot policy transfer.
+- Final action should still adapt to current weather/soil observations.

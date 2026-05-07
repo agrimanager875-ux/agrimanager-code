@@ -1,0 +1,109 @@
+hydra:
+  searchpath:
+    - file://${oc.env:VERL_CONFIG_PATH}
+
+defaults:
+  - ppo_trainer
+  - _self_
+
+data:
+  gen_batch_size: 16
+  max_prompt_length: 1024
+  max_response_length: 512
+  filter_overlong_prompts: True
+  truncation: error
+  return_raw_chat: True
+  train_files: smoke_tests/wofost_gym/data/wofost_gym_smoke_llm/train.parquet
+  val_files: smoke_tests/wofost_gym/data/wofost_gym_smoke_llm/val.parquet
+  val_sets: {}
+  validation_axis: null
+
+actor_rollout_ref:
+  hybrid_engine: True
+  model:
+    path: Qwen/Qwen3-4B-Instruct-2507
+    use_remove_padding: True
+    enable_gradient_checkpointing: True
+  actor:
+    optim:
+      lr: 1e-6
+    ppo_mini_batch_size: 128
+    ppo_micro_batch_size_per_gpu: 16
+    use_kl_loss: False
+    kl_loss_coef: 0.001
+    kl_loss_type: low_var_kl
+    entropy_coeff: 0
+    fsdp_config:
+      param_offload: False
+      optimizer_offload: False
+  rollout:
+    name: vllm
+    n: 8
+    temperature: 1
+    tensor_model_parallel_size: 1
+    gpu_memory_utilization: 0.6
+    log_prob_micro_batch_size_per_gpu: 16
+    multi_turn:
+      enable: True
+      interaction_config_path: agrimanager/adapter/configs/agri_interaction_config.yaml
+    agent:
+      agent_loop_config_path: agrimanager/adapter/configs/agri_agent_loop.yaml
+      agent_loop_manager_class: agrimanager.adapter.agent_loop.worker.AgriAgentLoopManager
+  ref:
+    log_prob_micro_batch_size_per_gpu: 16
+    fsdp_config:
+      param_offload: False
+      optimizer_offload: False
+
+algorithm:
+  adv_estimator: gae
+  use_kl_in_reward: False
+
+critic:
+  model:
+    path: Qwen/Qwen3-4B-Instruct-2507
+    use_remove_padding: True
+    enable_gradient_checkpointing: True
+  ppo_micro_batch_size_per_gpu: 16
+
+custom_reward_function:
+  path: agrimanager/adapter/reward/agri_reward.py
+  name: compute_score
+
+trainer:
+  per_turn_training: True
+  rollout_filter:
+    enable: False
+    metric: reward_variance
+    strategy: top_p
+    value: 0.9
+    filter_type: largest
+    include_zero: False
+    max_consecutive_all_filtered_steps: 5
+    score_key: traj_score
+    zero_eps: 1e-10
+    top_p_prob_mode: linear
+    selection_eps: 0.01
+  stepwise_advantage:
+    enable: True
+    mode: per_step
+    adv_estimator: gae
+    gamma: 1.0
+    lam: 0.97
+    whiten_advantages: True
+    critic_value_mode: prompt_only_wrapper
+    reward_source: env_step
+    token_reward_shape: last_token_sparse
+    gae_scope: cross_turn
+  critic_warmup: 0
+  logger: ["console", "wandb"]
+  project_name: agrimanager
+  experiment_name: wofost_gym-wheat_europe_interval_10-think-ppo-Qwen3-4B-Instruct-2507
+  default_local_dir: smoke_tests/wofost_gym/results/llm_train/${trainer.experiment_name}
+  n_gpus_per_node: 1
+  nnodes: 1
+  save_freq: -1
+  test_freq: 10
+  val_before_train: True
+  total_epochs: 1
+  log_val_generations: 4

@@ -1,0 +1,51 @@
+{
+  "crop": "rice",
+  "variety": "rice_1",
+  "trait_schema": "traits_v1_6d",
+  "core_facts": {
+    "decision_axes": {
+      "season_urgency": 0.8857358111501759,
+      "development_constraint": 0.3666666666666667,
+      "water_priority": 0.5558823529411765,
+      "nitrogen_priority": 0.35,
+      "phosphorus_priority": 0.25071618037135274,
+      "potassium_priority": 0.9021563342318059
+    }
+  },
+  "source_facts": {
+    "season_urgency": {
+      "TSUM_total_Cd": 1600.0,
+      "FOTB_storage_onset_DVS": 0.9
+    },
+    "development_constraint": {
+      "TBASEM_C": 8.0,
+      "IDSL": 0.0
+    },
+    "water_priority": {
+      "DEPNR": 3.5,
+      "RDMCR_cm": 80.0,
+      "CFET": 1.0,
+      "IAIRDU": 1.0
+    },
+    "nutrient_priority": {
+      "NMAXLV_DVS0": 0.06,
+      "NMAXLV_DVS1": 0.02,
+      "PMAXLV_DVS0": 0.009,
+      "PMAXLV_DVS1": 0.003,
+      "KMAXLV_DVS0": 0.12,
+      "KMAXLV_DVS1": 0.04
+    }
+  },
+  "derived_traits": {
+    "season_urgency_level": "high",
+    "development_constraint_level": "medium",
+    "water_priority_level": "medium",
+    "nitrogen_priority_level": "medium",
+    "phosphorus_priority_level": "low",
+    "potassium_priority_level": "high"
+  },
+  "notes": [
+    "This 6D card is derived from the raw WOFOST parameter card for policy transfer.",
+    "The axes are heuristic decision-facing summaries, not causal guarantees."
+  ]
+}

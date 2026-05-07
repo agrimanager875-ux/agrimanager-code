@@ -1,0 +1,10 @@
+{
+  "maize_weather_specialist": "experiments/legacy_wofost_weather_generalization/results/nn_train/wofost_generalization_weather_maize_nn_16ep_matched_train",
+  "wheat_weather_specialist": "experiments/legacy_wofost_weather_generalization/results/nn_train/wofost_generalization_weather_wheat_nn_16ep_matched_train",
+  "cotton_specialist": "experiments/support_t1_2_cross_crop_trait_selection/results/nn_train/wofost_specialist_transfer_cotton_nn_train_16ep_n1",
+  "rice_specialist": "experiments/support_t1_2_cross_crop_trait_selection/results/nn_train/wofost_specialist_transfer_rice_nn_train_16ep_n1",
+  "potato_specialist": "experiments/support_t1_2_cross_crop_trait_selection/results/nn_train/wofost_specialist_transfer_potato_nn_train_16ep_n1",
+  "sugarbeet_specialist": "experiments/support_t1_2_cross_crop_trait_selection/results/nn_train/wofost_specialist_transfer_sugarbeet_nn_train_16ep_n1",
+  "barley_specialist": "experiments/support_t1_2_cross_crop_trait_selection/results/nn_train/wofost_specialist_transfer_barley_nn_train_16ep_n1",
+  "seed_onion_specialist": "experiments/support_t1_2_cross_crop_trait_selection/results/nn_train/wofost_specialist_transfer_seed_onion_nn_train_16ep_n1"
+}

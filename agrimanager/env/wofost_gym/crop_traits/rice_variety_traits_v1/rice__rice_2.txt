@@ -1,0 +1,12 @@
+Crop Name: rice
+
+Rice Variety Profile
+- Phenology: short season (TSUM1=800 C.d, TSUM2=465 C.d, total=1615 C.d)
+- Development cue: DLO=14.0 h, vernalization base=14.0 d, saturation=70.0 d
+- Leaf expansion: slow (RGRLAI=0.0070 d-1)
+- Initial biomass: TDWI=55.0 kg ha-1
+- Assimilation and storage: AMAX peak=40.0, EFF peak=0.450, storage onset DVS=0.90
+
+Use guidance
+- Treat this as variety-level prior knowledge for rice management transfer.
+- Final action should still adapt to current weather, soil, nutrient, and growth observations.

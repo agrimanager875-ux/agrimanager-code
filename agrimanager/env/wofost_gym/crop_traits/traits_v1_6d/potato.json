@@ -1,0 +1,51 @@
+{
+  "crop": "potato",
+  "variety": "potato_1",
+  "trait_schema": "traits_v1_6d",
+  "core_facts": {
+    "decision_axes": {
+      "season_urgency": 0.7386263184329483,
+      "development_constraint": 0.1375,
+      "water_priority": 0.44999999999999996,
+      "nitrogen_priority": 0.6499999999999999,
+      "phosphorus_priority": 0.8599999999999999,
+      "potassium_priority": 0.43641509433962267
+    }
+  },
+  "source_facts": {
+    "season_urgency": {
+      "TSUM_total_Cd": 1870.0,
+      "FOTB_storage_onset_DVS": 1.27
+    },
+    "development_constraint": {
+      "TBASEM_C": 3.0,
+      "IDSL": 0.0
+    },
+    "water_priority": {
+      "DEPNR": 3.0,
+      "RDMCR_cm": 50.0,
+      "CFET": 1.0,
+      "IAIRDU": 0.0
+    },
+    "nutrient_priority": {
+      "NMAXLV_DVS0": 0.06,
+      "NMAXLV_DVS1": 0.045,
+      "PMAXLV_DVS0": 0.015,
+      "PMAXLV_DVS1": 0.0113,
+      "KMAXLV_DVS0": 0.057,
+      "KMAXLV_DVS1": 0.043
+    }
+  },
+  "derived_traits": {
+    "season_urgency_level": "high",
+    "development_constraint_level": "low",
+    "water_priority_level": "medium",
+    "nitrogen_priority_level": "medium",
+    "phosphorus_priority_level": "high",
+    "potassium_priority_level": "medium"
+  },
+  "notes": [
+    "This 6D card is derived from the raw WOFOST parameter card for policy transfer.",
+    "The axes are heuristic decision-facing summaries, not causal guarantees."
+  ]
+}

@@ -1,0 +1,3 @@
+test_files: data/wofost_gym/wheat_europe_interval_10/test.parquet
+output_dir: results/wheat_europe_interval_10/test/pp_v0_baseline
+intvn_interval: 10

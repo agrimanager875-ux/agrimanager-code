@@ -1,0 +1,104 @@
+env_name: wofost_gym
+dataset_id: cross_crop_16id_llm_traits_v1_23d_think
+validation_axis: crop
+source:
+  kind: weather_pool
+  path: agrimanager/wofost-weather-pool
+sampling:
+  generation_seed: 42
+  splits:
+    train:
+      crop_budgets:
+        chickpea: 100
+        cotton: 100
+        cowpea: 100
+        fababean: 100
+        maize: 100
+        millet: 100
+        mungbean: 100
+        potato: 100
+        rapeseed: 100
+        rice: 100
+        sorghum: 100
+        soybean: 100
+        sugarbeet: 100
+        sunflower: 100
+        sweetpotato: 100
+        wheat: 100
+    val_id_crops:
+      role: validation
+      validation_set: id_crops
+      labels:
+        crop_regime: id
+      crop_budgets:
+        chickpea: 24
+        cotton: 24
+        cowpea: 24
+        fababean: 24
+        maize: 24
+        millet: 24
+        mungbean: 24
+        potato: 24
+        rapeseed: 24
+        rice: 24
+        sorghum: 24
+        soybean: 24
+        sugarbeet: 24
+        sunflower: 24
+        sweetpotato: 24
+        wheat: 24
+    val_heldout_crops:
+      role: validation
+      validation_set: heldout_crops
+      labels:
+        crop_regime: heldout
+      crop_budgets:
+        barley: 96
+        groundnut: 96
+        pigeonpea: 96
+        seed_onion: 96
+    test_id_crops:
+      role: test
+      labels:
+        crop_regime: id
+      crop_budgets:
+        chickpea: 128
+        cotton: 128
+        cowpea: 128
+        fababean: 128
+        maize: 128
+        millet: 128
+        mungbean: 128
+        potato: 128
+        rapeseed: 128
+        rice: 128
+        sorghum: 128
+        soybean: 128
+        sugarbeet: 128
+        sunflower: 128
+        sweetpotato: 128
+        wheat: 128
+    test_heldout_crops:
+      role: test
+      labels:
+        crop_regime: heldout
+      crop_budgets:
+        barley: 128
+        groundnut: 128
+        pigeonpea: 128
+        seed_onion: 128
+env:
+  env_id: lnpkw-v0
+  wofost_gym_path: ../AgriManagerExternal/WOFOSTGym
+  llm_mode: true
+  intvn_interval: 10
+  turn_num: 24
+  scale_action_amounts_by_interval: true
+  valid_action_bonus: 0.1
+  objective_id: profit_max
+  include_crop_traits: true
+  crop_traits_dir: agrimanager/env/wofost_gym/crop_traits
+  trait_schema: traits_v1_23d
+  require_think: true
+  thinking_mode: think
+  think_tag: tool_call
