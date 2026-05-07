@@ -32,14 +32,15 @@ if [[ -z "${DSSAT_SPACK_PYTHONPATH:-}" && -d "${DSSAT_GYM_PATH:-}" ]]; then
     DSSAT_SPACK_PYTHONPATH="$(
         find "$DSSAT_GYM_PATH" "$SPACK_ROOT/opt/spack" \
             -path '*/lib/python3.10/site-packages' -type d -print 2>/dev/null \
-            | awk 'BEGIN{sep=""} {printf "%s%s", sep, $0; sep=":"}'
+            | awk 'BEGIN{sep=""} {printf "%s%s", sep, $0; sep=":"}' \
+            || true
     )"
     if [[ -n "$DSSAT_SPACK_PYTHONPATH" ]]; then
         export DSSAT_SPACK_PYTHONPATH
     fi
 fi
 
-BRIDGE_SOURCE="$PROJECT_ROOT/AgriManagerExternal/gym_dssat_pdi/gym-dssat-pdi"
+BRIDGE_SOURCE="${DSSAT_PDI_BRIDGE_DIR:-$PROJECT_ROOT/AgriManagerExternal/gym_dssat_pdi/gym-dssat-pdi}"
 
 # Keep the active Conda Python in front so AgriManager/VERL imports still come
 # from the working training environment, while preserving the DSSAT runtime
@@ -51,7 +52,9 @@ elif [[ -n "$ORIGINAL_PATH" ]]; then
 fi
 hash -r
 
-if [[ -n "$ORIGINAL_CONDA_PYTHON" ]]; then
+if [[ -n "${AGRIMANAGER_PYTHON:-}" ]]; then
+    :
+elif [[ -n "$ORIGINAL_CONDA_PYTHON" ]]; then
     export AGRIMANAGER_PYTHON="$ORIGINAL_CONDA_PYTHON"
 elif [[ -n "$ORIGINAL_PYTHON3" ]]; then
     export AGRIMANAGER_PYTHON="$ORIGINAL_PYTHON3"
