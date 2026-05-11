@@ -8,11 +8,15 @@ The goal is to enable models that can reason about environmental conditions and 
 **AgriManager** glues together three pillars:
 - **Model Interface** -- unified wrappers for OpenAI, Google Gemini, and custom
   (offline/server) vLLM endpoints that expose a simple `generate()` API.
-- **Environments** -- adapters that turn crop management simulators such as
-  [WOFOST-Gym](https://github.com/Intelligent-Reliable-Autonomous-Systems/WOFOSTGym)
-  into text interfaces for language-model agents.
+- **Environments** -- adapters that turn crop-management simulators such as
+  WOFOST-Gym, CycleGym, and DSSAT-Gym into text interfaces for language-model
+  agents and numeric interfaces for supported NN baselines.
 - **Training & Inference** -- GRPO training via [VERL](https://github.com/volcengine/verl)
   and batched inference rollouts across many environment configs.
+
+The hosted tabular artifacts are WOFOST-based. CycleGym and DSSAT experiments
+are reproduced through executable simulator adapters and scenario-generation
+scripts, with DSSAT requiring an optional external runtime installation.
 
 ---
 
@@ -21,7 +25,7 @@ The goal is to enable models that can reason about environmental conditions and 
 1. Clone this repository and enter it:
 
    ```bash
-   git clone https://github.com/agrimanager875-ux/agrimanager-code.git
+   git clone https://github.com/agrimanager875-ux/agrimanager-code.git AgriManager
    cd AgriManager
    ```
 
@@ -43,6 +47,17 @@ The goal is to enable models that can reason about environmental conditions and 
    - Clones and installs WOFOST-Gym at the configured pinned ref under `../AgriManagerExternal/WOFOSTGym`
    - Clones and installs CyclesGym at the configured pinned ref under `../AgriManagerExternal/CyclesGym`
    - Installs AgriManager itself in editable mode
+
+### Operational Requirements
+
+| Path | Purpose | Hardware/runtime |
+| --- | --- | --- |
+| Docs-only inspection | Artifact review and source inspection | Browser only |
+| WOFOST dataset smoke test | Lightweight sanity check for hosted weather-pool rows and adapters | CPU acceptable |
+| LLM inference/eval | Model rollout evaluation | CUDA GPU recommended; required for local large-model inference |
+| LLM-RL training | Full VERL/GRPO training | Multi-GPU likely for paper-scale runs |
+| CycleGym | Native Cycles simulator-backed experiments | External CycleGym/Cycles checkout and bootstrap through `install.sh` |
+| DSSAT-Gym | Optional DSSAT-backed experiments | Separate DSSAT-Gym/DSSAT-PDI runtime; setup can take 1-2 hours |
 
 ### Optional DSSAT-Gym Setup
 
@@ -104,9 +119,13 @@ The main internal docs are split by question:
 
 ## Release And Maintenance
 
-An anonymized version of the AgriManager codebase will be available during
-review. The full public GitHub repository will be released upon acceptance and
-no later than the camera-ready deadline. We will maintain a stable release
+This repository is the anonymized code artifact for review. The submitted
+artifact version is tagged as `neurips2026-submission`; use that tag for a
+stable code snapshot. Post-submission documentation-only changes are recorded
+in [CHANGELOG.md](CHANGELOG.md).
+
+The full public GitHub repository will be released upon acceptance and no later
+than the camera-ready deadline. We will maintain a stable release
 corresponding to the paper and plan to support the repository for at least two
 years after publication by addressing critical issues, fixing reproducibility
 bugs, and updating documentation when necessary. No essential component
