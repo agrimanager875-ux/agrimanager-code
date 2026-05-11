@@ -54,9 +54,9 @@ optimal or a substitute for crop-specific expert management.
 ## Source Stack For `ag_heuristic`
 
 The source-informed policy should be defined from a small set of real
-agronomic decision frameworks rather than a hand-written "common sense" recipe.
-Rules should cite one of the sources below or a crop-specific extension source
-added here.
+agronomic decision frameworks rather than an uncited heuristic recipe. Rules
+should cite one of the sources below or a crop-specific extension source added
+here.
 
 ### Fertilizer
 
@@ -112,7 +112,7 @@ dependency, including `ENVIRONMENT_CONFIG.md` when present under
 ## AG-Heuristic Policy Contract
 
 The `ag_heuristic` baseline is a frozen scripted policy. It is a reference
-policy, not an expert upper bound.
+policy, not an expert policy or performance bound.
 
 ### WOFOST-Gym
 
@@ -210,12 +210,9 @@ Allowed:
 - "attainable scripted profit reference";
 - "yield-potential diagnostic".
 
-Avoid:
-
-- "expert upper bound";
-- "agricultural common-sense upper anchor";
-- "comparable to an agronomic expert" when the policy is the legacy
-  high-input/stage-budgeted script.
+Avoid describing the baseline as an expert policy, a performance bound, an
+agronomic common-sense anchor, or comparable to an agronomic expert when the
+policy is the legacy high-input/stage-budgeted script.
 
 For profit-risk reporting, include the percentage of validation splits where
 each method is worse than `no_action`. This is more stable than normalizing
@@ -252,8 +249,8 @@ Current smoke/probe result:
 
 The eight-crop probe is intentionally not a paper-level estimate. It is enough
 to establish the claim boundary: `ag_heuristic` is a defensible scripted
-reference, but it still should not be used as a profit upper anchor or assumed
-to dominate `no_action` under distribution shift.
+reference, but it still should not be used as a performance bound or assumed to
+dominate `no_action` under distribution shift.
 
 Generated rollout outputs are local analysis artifacts. Do not commit rollout
 results, logs, checkpoints, tracker links, or machine-specific paths.
