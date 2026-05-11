@@ -17,9 +17,13 @@ Companion docs:
 
 ## What we support today
 
-- **`wofost_gym`** — primary. LLM and NN paths both work.
-- **`gym_dssat`** — WIP. LLM path works; pest mechanics are partial; NN
-  path is not wired.
+- **`wofost_gym`** — primary paper backend. LLM and NN adapter paths both work.
+- **`cycles_gym`** — supported backend for CycleGym crop-planning,
+  price-regime, and cross-simulator experiments. LLM and NN adapter paths are
+  available where documented by the experiment configs.
+- **`gym_dssat`** — optional external-runtime backend. LLM rollout and
+  generator paths are available; the NN adapter path is not currently
+  supported.
 
 Treat `wofost_gym` as the reference; a new env should look the same.
 
@@ -41,12 +45,12 @@ Two facts make this work:
 - **The parquet is self-describing.** Every row carries
   `extra_info.interaction_kwargs.env_config` including `env_name`. Training
   reads the parquet directly without looking up the original dataset YAML.
-- **There is no registry.** Both phases call
-  `importlib.import_module("agrimanager.env.wofost_gym")` and use
-  `agrimanager.env.base.utils.discover_env_classes()` to find the
-  `BaseEnv` and `BaseEnvConfig` subclasses. The NN path additionally imports
-  an environment package's `nn_adapter` module and discovers a
-  `BaseNNEnvAdapter` subclass. Drop a new folder in, it works.
+- **There is no registry.** Both phases import the package named by the row's
+  `env_name`, such as `agrimanager.env.wofost_gym`, and use
+  `agrimanager.env.base.utils.discover_env_classes()` to find the `BaseEnv`
+  and `BaseEnvConfig` subclasses. The NN path additionally imports an
+  environment package's `nn_adapter` module and discovers a `BaseNNEnvAdapter`
+  subclass. Drop a new folder in, it works.
 
 Source: router [agrimanager/env/create_dataset.py](../agrimanager/env/create_dataset.py),
 adapter [agrimanager/adapter/interactions/agri_interaction.py](../agrimanager/adapter/interactions/agri_interaction.py),
@@ -109,8 +113,9 @@ To support framework-native NN training and eval, add:
 The adapter contract is intentionally generic. The shared NN trainer reads
 the same parquet artifacts as the LLM path, extracts
 `extra_info.interaction_kwargs.env_config`, infers `env_name`, and imports
-the environment package's `nn_adapter` module. Do not add simulator-specific
-branches in the trainer.
+the environment package's `nn_adapter` module. Shared training/evaluation
+routers should avoid simulator-specific conditionals; backend-specific
+behavior belongs in the environment adapter package.
 
 ![NN env flow](assets/nn_env_flow.svg)
 
@@ -195,6 +200,8 @@ NN work should target the generic `BaseNNEnvAdapter` path.
 - Env-specific code lives under packages such as `agrimanager/env/wofost_gym/`.
   Shared base code
   should only contain generic contracts/helpers that every environment can use.
-- No `if env_name == ...` branches anywhere. Dispatch goes through
-  `agrimanager.env.base.utils.create_environment()`.
+- Shared routers should not grow simulator-specific branches. Dispatch goes
+  through `agrimanager.env.base.utils.create_environment()`, and simulator
+  details should stay inside `agrimanager/env/wofost_gym/`,
+  `agrimanager/env/cycles_gym/`, or `agrimanager/env/gym_dssat/`.
 - Do not modify [`verl/`](../verl/) for environment integration.
