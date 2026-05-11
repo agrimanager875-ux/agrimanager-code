@@ -170,8 +170,22 @@ For standard `lnpkw-v0` environment:
 
 ## Reward
 
-- **Default**: Crop yield (WSO - Weight of Storage Organs)
-- **Custom**: Can be modified with reward wrappers
+Rewards are selected by `objective_id`. The paper-facing objectives are:
+
+| Objective | Meaning |
+| --- | --- |
+| `yield_max` | Maximize terminal yield / WSO. |
+| `profit_max` | Maximize terminal profit after yield revenue and input costs. |
+| `water_stewardship` | Reward production while penalizing water use. |
+| `nutrient_stewardship` | Reward production while penalizing nutrient inputs. |
+
+The environment returns the scalar reward corresponding to the
+prompt-declared objective. Reward-schema experiments vary the objective block
+in the prompt and the matching environment-side `objective_id`.
+
+Legacy native WOFOST-Gym reward wrappers are still supported through
+`env_reward` for older configs, but new experiment configs should use
+`objective_id`.
 
 ## Advanced Usage
 
