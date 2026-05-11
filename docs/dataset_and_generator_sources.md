@@ -178,7 +178,7 @@ Run these commands from the repository root after the standard install in
 `README.md` has completed:
 
 ```bash
-git clone https://github.com/agrimanager875-ux/agrimanager-code.git
+git clone https://github.com/agrimanager875-ux/agrimanager-code.git AgriManager
 cd AgriManager
 bash install.sh
 ```
