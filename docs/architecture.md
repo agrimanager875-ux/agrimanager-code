@@ -43,7 +43,8 @@ no free-form override passthrough.
 
 Dataset configs carry an `env_name`. The framework does
 `importlib.import_module(f"agrimanager.env.{env_name}")` to get the env
-code. No `if env_name == ...` branch exists anywhere.
+code. Shared routers should avoid simulator-specific branches; backend-specific
+behavior belongs in the adapter package named by `env_name`.
 
 To add a new env, see
 [environment_adapter_contract.md](./environment_adapter_contract.md).
