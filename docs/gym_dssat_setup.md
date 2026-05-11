@@ -31,7 +31,7 @@ You can skip this setup for WOFOST-Gym and CycleGym smoke tests.
 First complete the standard AgriManager install from the repository root:
 
 ```bash
-git clone https://github.com/agrimanager875-ux/agrimanager-code.git
+git clone https://github.com/agrimanager875-ux/agrimanager-code.git AgriManager
 cd AgriManager
 
 conda create -n agrimanager python=3.12 -y
